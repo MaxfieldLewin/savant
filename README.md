@@ -2,22 +2,19 @@
 
 [Heroku link][heroku]
 
-[heroku]: http://flux-capacitr.herokuapp.com
+[heroku]:
 
 ## Minimum Viable Product
 Savant is a Genius clone built on Rails and Backbone. Users can:
 
-<!-- This is a Markdown checklist. Use it to keep track of your progress! -->
-
 - [ ] Create accounts
 - [ ] Create sessions (log in)
 - [ ] Add texts (song lyrics, news articles, poems, any item of public record)
-- [ ] View blogs and posts
-- [ ] Subscribe to blogs
-- [ ] View a feed of subscribed blogs
-- [ ] Tag blog posts
-- [ ] Search for blogs by title
-- [ ] Search for posts by tag
+- [ ] Annotate texts line-by-line
+- [ ] Comment on texts, annotations, and artists
+- [ ] View texts with their annotations and comments as a cohesive, single-page experience
+- [ ] Tag songs and artists
+- [ ] Search for songs by title, artist, contents and tags
 
 ## Design Docs
 * [View Wireframes][views]
@@ -37,50 +34,26 @@ to phase 2.
 
 [Details][phase-one]
 
-### Phase 2: Viewing Blogs and Posts (~2 days)
-I will add API routes to serve blog and post data as JSON, then add Backbone
-models and collections that fetch data from those routes. By the end of this
-phase, users will be able to create blogs and view both blogs and posts, all
-inside a single Backbone app.
+### Phase 2: Adding, Editing and Viewing Artists and Songs (~2 days)
+I'll implement the API routes for serving Song and Artist data. I'll implement the top level Backbone models and composite views, particularly enabling in-place editing of Artist data, and non-lyric Song data (lyrics can't be in-place because annotation events need to target the same elements, so lyric editing will be a modal).
 
 [Details][phase-two]
 
-### Phase 3: Editing and Displaying Posts (~2 days)
-I plan to use third-party libraries to add functionality to the `PostForm` and
-`PostShow` views in this phase. First I'll need to add a Markdown editor to the
-`PostForm`, and make sure that the Markdown is properly escaped and formatted in
-the `PostShow` view. I also plan to integrate Filepicker for file upload so
-users can add images to blog posts.
+### Phase 3: Adding, Editing and Viewing Song Annotations (~4 days)
+The main feature, I'll implement the API for serving Annotation data. This will also involve writing parsing logic to separate the raw song lyrics into song-fragments, though this will be invisible on the front-end - basically, when a user highlights an as yet unannotated portion of a song lyric, a new song-fragment pointing to that portion o the raw lyric will be instantiated, which the annotation will point to. Once the annotation is made, the song view will show the annotated fragment as highlighted, and an annotation view will appear adjacent to the song lyric on click of the fragment. If the annotation author is viewing, they will also be able to edit this annotation in-place.
 
 [Details][phase-three]
 
-### Phase 4: User Feeds (~1-2 days)
-I'll start by adding a `feed` route that uses the `current_user`'s
-`subscribed_blogs` association to serve a list of blog posts ordered
-chronologically. On the Backbone side, I'll make a `FeedShow` view whose `posts`
-collection fetches from the new route.  Ultimately, this will be the page users
-see after logging in.
+### Phase 4:
 
 [Details][phase-four]
 
-### Phase 5: Searching for Blogs and Posts (~2 days)
-I'll need to add `search` routes to both the Blogs and Posts controllers. On the
-Backbone side, there will be a `SearchResults` composite view has `BlogsIndex`
-and `PostsIndex` subviews. These views will use plain old `blogs` and `posts`
-collections, but they will fetch from the new `search` routes.
+### Phase 5:
 
 [Details][phase-five]
 
 ### Bonus Features (TBD)
-- [ ] "Like" button and counter for posts
-- [ ] Custom blog urls
-- [ ] Pagination/infinite scroll
-- [ ] Activity history (e.g. likes, reblogs, taggings)
-- [ ] Post types (image posts, quote posts, etc)
-- [ ] Reblogging
-- [ ] Multiple sessions/session management
-- [ ] User avatars
-- [ ] Typeahead search bar
+- [ ]
 
 [phase-one]: ./docs/phases/phase1.md
 [phase-two]: ./docs/phases/phase2.md
