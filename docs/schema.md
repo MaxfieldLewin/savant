@@ -1,14 +1,14 @@
 # Schema Information
 
 ## songs (also articles/excerpts/poems/texts)
-column name | data type | details
-------------|-----------|-----------------------
-id          | integer   | not null, primary key
-artist_id   | integer   | not null, foreign key (references artists)
-user_id     | integer   | not null, foreign key (references user who transcribed)
-title       | string    | not null
-description | text      |
-raw_contents| text      |
+column name  | data type | details
+-------------|-----------|-----------------------
+id           | integer   | not null, primary key
+artist_id    | integer   | not null, foreign key (references artists)
+title        | string    | not null
+description  | text      |
+raw_contents | text      |
+image_id     | integer   | foreign key, (references id of photo displayed in SongShow banner)
 
 ## song_fragment (formatted representation of words/lines for attachment of annotations)
 column name | data type | details
