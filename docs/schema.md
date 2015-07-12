@@ -25,7 +25,7 @@ id               | integer   | not null, primary key
 song_fragment_id | integer   | not null, foreign key (references song_fragments)
 contents         | text      | not null
 
-## contribution
+## contribution (polymorphic, as contributable)
 column name   | data type | details
 --------------|-----------|-----------------------
 id            | integer   | not null, primary key
@@ -34,7 +34,7 @@ contibuted_id | integer   | not null, foreign key (references annotation/song)
 diff          | text      | not null (diff generated from submitted vs. previous contributed text)
 percent       | integer   | not null (percent of diff present in current version of contributed text)
 
-## comments (on artists, songs, annotations)
+## comments (polymorphic, as commentable)
 column name    | data type | details
 ---------------|-----------|-----------------------
 id             | integer   | not null, primary key
@@ -60,7 +60,7 @@ name            | string    | not null, unique
 description     | text      |
 verified_user_id| integer   | unique, foreign key (references users)
 
-## tags
+## tags (polymorphic, as taggable)
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
@@ -74,14 +74,14 @@ taggable_id | integer   | not null, foreign key (references artists/songs)
 tag_id      | integer   | not null, foreign key (references tags)
 
 
-## likes
+## likes (polymorphic, as likeable)
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
 likeable_id | integer   | not null, foreign key (references artists/songs/annotations/comments)
 user_id     | integer   | not null, foreign key (references users)
 
-## followings
+## followings (polymorphic, as followable)
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key

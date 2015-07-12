@@ -1,20 +1,27 @@
-# Phase 4: User Feeds
+# Phase 4: Moderators and Contributions
 
 ## Rails
 ### Models
+* Contribution
+* Moderator (subclass of user?)
 
 ### Controllers
-Api::PostsController (feed)
+* Api::ContributionsController
 
 ### Views
-posts/feed.json.jbuilder
+* contributions/show.json.jbuilder
 
 ## Backbone
 ### Models
+* Contribution
+* Moderator
 
 ### Collections
+* Contributions
 
 ### Views
-* FeedShow (composite view, contains PostsIndex subview)
+* ModeratorAnnotationShow (an alternative subview, instantiated instead of normal AnnotationShow when the current user is a moderator, allowing them to edit and approve an Annotation)
+* ContributionsShow (instantiated inside SongShow and AnnotationShow)
 
 ## Gems/Libraries
+* diff-LCS or diffy

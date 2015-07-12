@@ -1,22 +1,36 @@
-# Phase 5: Searching for Blogs and Posts
+# Phase 5: Commenting, Tagging, Liking, Following
 
 ## Rails
 ### Models
+* Comment
+* Tag
+* Tagging
+* Like
+* Following
 
 ### Controllers
-Api::BlogsController (search)
-Api::PostsController (search)
+* Api::CommentsController (create, destroy, update, show, index)
+* Api::TaggingsController (create, destroy, show, index)
+* Api::LikesController
+* Api::FollowingsController
+* (Add associations for all of these to relevant models and queries)
 
 ### Views
+* comments/_comment.json.jbuilder
+* taggings/_tagging.json.jbuilder
+* (Add optional calls to these in relevant associated views)
 
 ## Backbone
 ### Models
+* Comment
+* Tag
 
 ### Collections
+* Comments
+* Tags
 
 ### Views
-* BlogSearchItem
-* SearchShow (composite view, contains BlogsIndex and PostsIndex subviews)
+* CommentForm (subview of various other Show views)
+* CommentIndex (subview of same)
 
 ## Gems/Libraries
-

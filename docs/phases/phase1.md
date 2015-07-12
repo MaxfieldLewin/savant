@@ -1,28 +1,21 @@
-# Phase 1: User Authentication, Basic Blogs and Posts
+# Phase 1: User Authentication, Song and Artist Creation
 
 ## Rails
 ### Models
 * User
-* Blog
-* Post
+* Artist
+* Song
 
 ### Controllers
 * UsersController (create, new)
 * SessionsController (create, new, destroy)
-* BlogsController (create, new, show)
-* PostsController (create, new, show)
+* ArtistsController (create, new, show)
+* SongsController (create, new, show)
 
 ### Views
 * users/new.html.erb
 * session/new.html.erb
-* blogs/new.html.erb
-* blogs/show.html.erb
-
-## Backbone
-### Models
-
-### Collections
-
-### Views
-
-## Gems/Libraries
+* artists/new.html.erb
+* artists/show.html.erb
+* songs/new.html.erb
+* songs/show.html.erb

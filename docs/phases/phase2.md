@@ -1,29 +1,36 @@
-# Phase 2: Viewing Blogs and Posts
+# Phase 2: Viewing and Editing Artists and Songs
 
 ## Rails
 ### Models
 
+
 ### Controllers
-Api::BlogsController (create, destroy, index, show)
-Api::PostsController (create, destroy, show, update)
+* Api::SongsController (create, destroy, index, show, update)
+* Api::ArtistsController (create, destroy, index, show, update)
 
 ### Views
-* blogs/show.json.jbuilder
+* songs/_song.json.jbuilder
+* songs/show.json.jbuilder
+* songs/index.json.jbuilder
+* artists/_artist.json.jbuilder
+* artists/show.json.jbuilder
+* artists/index.json.jbuilder
 
 ## Backbone
 ### Models
-* Blog (parses nested `posts` association)
-* Post
+* Song
+* Artist (parses nested `songs` association)
 
 ### Collections
-* Blogs
-* Posts
+* Songs
+* Artists
 
 ### Views
-* BlogForm
-* BlogShow (composite view, contains PostsIndex subview)
-* PostsIndex (composite view, contains PostsIndexItem subviews)
-* PostsIndexItem
-* PostShow
+* ArtistForm
+* ArtistsIndex
+* ArtistShow (composite view contains ArtistSongsIndex subview )
+* SongForm
+* SongIndex
+* SongShow(composite view)
 
 ## Gems/Libraries
