@@ -1,26 +1,26 @@
 # View Wireframes
 
-## New Session
+## Root Page(landing page)
+![root-page]
+
+## New User
+![new-user]
+
+## Log In
 ![new-session]
 
-## Feed Show (landing page)
-![feed-show]
+## Song Show
+![song-show]
 
-## Blog Show
-![blog-show]
+## Adding an annotation
+![song-show-with-new-annotation]
 
-## Post Show
-![post-show]
+## New Song
+![new-song]
 
-## Post Form
-![post-form]
-
-## Search Results
-![search-results]
-
-[new-session]: ./wireframes/new_session.png
-[feed-show]: ./wireframes/feed_show.png
-[blog-show]: ./wireframes/blog_show.png
-[post-show]: ./wireframes/post_show.png
-[post-form]: ./wireframes/post_form.png
-[search-results]: ./wireframes/search_results.png
+[root-page]: ./wireframes/root_page.png
+[new-user]: ./wireframes/sign_up.png
+[new-session]: ./wireframes/sign_in.png
+[song-show]: ./wireframes/song_show.png
+[song-show-with-new-annotation]: ./wireframes/song_show_with_new_annotation.png
+[new-song]: ./wireframes/new_song.png
