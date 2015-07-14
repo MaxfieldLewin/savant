@@ -1,5 +1,7 @@
 <h1>Sign Up for Savant</h1>
-
+<% if @user.errors.any? %>
+  <%= render partial: "shared/errors", locals: {model: @user} %>
+<% end %>
 <form  action="<%= users_url %>" method="post">
   <%= form_auth_token %>
   <label for="username">Username</label>
@@ -10,4 +12,6 @@
 
   <label for="password">Password</label>
   <input id="password" type="password" name="user[password]">
+
+  <button>Submit</button>
 </form>
