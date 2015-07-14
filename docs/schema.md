@@ -59,6 +59,7 @@ id              | integer   | not null, primary key
 name            | string    | not null, unique
 description     | text      |
 verified_user_id| integer   | unique, foreign key (references users)
+image_id        | integer   | foreign key, (references id of photo displayed in ArtistShow view))
 
 ## tags (polymorphic, as taggable)
 column name | data type | details
