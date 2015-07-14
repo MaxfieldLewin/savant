@@ -4,7 +4,6 @@ window.Savant = {
   Views: {},
   Routers: {},
   initialize: function() {
-    alert('Hello from Backbone!');
   }
 };
 

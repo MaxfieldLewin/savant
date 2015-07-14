@@ -7,9 +7,9 @@ Rails.application.routes.draw do
   resources :artists #, only: [:new, :edit, :create, :update]
   resources :songs
 
-  namespace :api do
-    resources :artists, except: [:new, :edit]
-    resources :songs, except: [:new, :edit]
+  namespace :api, defaults: {json: true} do
+    resources :artists, except: [:new, :create]
+    resources :songs, except: [:new, :create ]
   end
 
 end

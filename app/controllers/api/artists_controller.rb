@@ -1,17 +1,22 @@
 class Api::ArtistsController < ApplicationController
 
-  def create
-    @artist = Artist.new(artist_params)
-    if @artist.save
-      redirect_to root_url
-    else
-      render "artists/new"
-    end
+  def edit
+  end
+
+  def update
+  end
+
+  def show
+    @artist = Artist.includes(:songs).find(params[:id])
+  end
+
+  def index
+    @artist == Artist.all
   end
 
   private
   def artist_params
-    params.require(:artist).permit(:name, :description)
+    params.require(:artist).permit(:name, :description, :image_id, :verified_user_id)
   end
 
 end
