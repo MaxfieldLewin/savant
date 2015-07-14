@@ -5,11 +5,11 @@
 <form  action="<%= session_url %>" method="post">
   <%= form_auth_token %>
   <label for="loginString">Username or Email</label>
-  <input id="loginString" type="text" name="user[loginString]" value="<%= @user.login_string %>">
+  <input id="loginString" type="text" name="login_string" value="<%= @user.login_string %>">
 
 
   <label for="password">Password</label>
-  <input id="password" type="password" name="user[password]">
+  <input id="password" type="password" name="password">
 
   <button>Submit</button>
 </form>

@@ -5,17 +5,18 @@ class User < ActiveRecord::Base
   after_initialize :ensure_session_token
 
   attr_reader :password
+  attr_accessor :login_string
 
   def self.generate_session_token
     SecureRandom::urlsafe_base64(16)
   end
 
-  def self.find_by_credentials(loginString, password)
-    user = User.find_by(username: loginString)
+  def self.find_by_credentials(login_string, password)
+    user = User.find_by(username: login_string)
     if user && user.is_password?(password)
       return user
     else
-      user = User.find_by(email: loginString)
+      user = User.find_by(email: login_string)
       if user && user.is_password?(password)
         return user
       end
@@ -35,7 +36,7 @@ class User < ActiveRecord::Base
 
   def reset_session_token!
     self.session_token = nil
-    self.ensure_session_token
+    self.session_token = User.generate_session_token
     self.save!
   end
 
