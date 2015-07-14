@@ -15,7 +15,6 @@ column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
 song_id     | integer   | not null, foreign key (references songs)
-contents    | string    | not null
 offset      | integer   | not null (offset pointer to character in song.raw_contents)
 
 ## annotations

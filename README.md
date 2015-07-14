@@ -9,7 +9,7 @@ Savant is a Genius clone built on Rails and Backbone. Users can:
 
 - [X] Create accounts
 - [X] Create sessions (log in)
-- [ ] Add artists & texts (song lyrics, news articles, poems, any item of public record)
+- [X] Add artists & texts (song lyrics, news articles, poems, any item of public record)
 - [ ] Annotate texts line-by-line
 - [ ] Comment on texts, annotations, and artists
 - [ ] View texts with their annotations and comments as a cohesive, single-page experience
@@ -55,7 +55,9 @@ Finally, I'll implement the various models and polymorphic associations to allow
 [Details][phase-five]
 
 ### Bonus Features (TBD)
-- [ ]
+- [ ] Embeded images and videos in annotations
+- [ ] Tag pages (i.e. Rap Savant, Pop Savant, etc) with custom URLs
+- [ ] Verified Artists
 
 [phase-one]: ./docs/phases/phase1.md
 [phase-two]: ./docs/phases/phase2.md
