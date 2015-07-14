@@ -2,14 +2,14 @@
 
 [Heroku link][heroku]
 
-[heroku]:
+[heroku]: https://hiphopsavant.herokuapp.com/
 
 ## Minimum Viable Product
 Savant is a Genius clone built on Rails and Backbone. Users can:
 
-- [ ] Create accounts
-- [ ] Create sessions (log in)
-- [ ] Add texts (song lyrics, news articles, poems, any item of public record)
+- [X] Create accounts
+- [X] Create sessions (log in)
+- [ ] Add artists & texts (song lyrics, news articles, poems, any item of public record)
 - [ ] Annotate texts line-by-line
 - [ ] Comment on texts, annotations, and artists
 - [ ] View texts with their annotations and comments as a cohesive, single-page experience
