@@ -11,7 +11,7 @@ class Api::ArtistsController < ApplicationController
   end
 
   def index
-    @artist == Artist.all
+    @artists = Artist.all
   end
 
   private
