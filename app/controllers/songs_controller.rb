@@ -1,6 +1,7 @@
 class SongsController < ApplicationController
 
   def new
+    @artists = Artist.all
     @song = Song.new
   end
 
@@ -9,6 +10,7 @@ class SongsController < ApplicationController
     if @song.save
       redirect_to root_url
     else
+      @artists = Artist.all
       render :new
     end
   end
@@ -31,5 +33,5 @@ class SongsController < ApplicationController
   private
     def song_params
       params.require(:song).permit(:artist_id, :title, :description, :contents, :image_id)
-
+    end
 end

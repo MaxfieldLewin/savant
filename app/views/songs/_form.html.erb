@@ -1,0 +1,24 @@
+<form  action="<%= songs_url %>" method="post">
+  <%= form_auth_token %>
+  <%= edit ? form_http_method("put") : "" %>
+
+  <label for="artist">Artist</label>
+  <select id="artist" name="song[artist_id]">
+    <% artists.each do |artist| %>
+      <option value="<%= artist.id %>" <%= artist.id == song.artist_id ? "selected" : ""  %>
+        ><%= artist.name %>
+      </option>
+    <% end %>
+  </select>
+
+  <label for="title">Title</label>
+  <input id="title" type="text" name="song[title]" value="<%= song.name %>">
+
+  <label for="description">Description</label>
+  <textarea id="description" name="song[description]"><%= song.description %></textarea>
+
+  <label for="contents">Lyrics/Contents</label>
+  <textarea id="contents" name="song[contents]"><%= song.contents %></textarea>
+
+  <button>Submit</button>
+</form>
