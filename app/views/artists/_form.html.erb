@@ -1,0 +1,11 @@
+<form  action="<%= api_artists_url %>" method="post">
+  <%= form_auth_token %>
+  <%= edit ? form_http_method("put") : "" %>
+  <label for="name">Name</label>
+  <input id="name" type="text" name="artist[name]" value="<%= artist.name %>">
+
+  <label for="description">description</label>
+  <textarea id="description" name="artist[description]"><%= artist.description %></textarea>
+
+  <button>Submit</button>
+</form>
