@@ -10,6 +10,7 @@ class SessionsController < ApplicationController
       log_in!(@user)
       redirect_to root_url
     else
+      @user.login_string = params[:loginString]
       render :new
     end
   end
