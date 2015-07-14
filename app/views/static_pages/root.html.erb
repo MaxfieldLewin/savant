@@ -4,3 +4,12 @@
 <br>
 <a href="<%= new_song_url %>"> Add a Song </a>
 <br>
+
+<h2> Some Songs</h2>
+<ul>
+  <% @songs.each do |song| %>
+    <li>
+      <a href="<%= songs_url(song) %>">"<%= song.title %>" by <%= song.artist.name %></a>
+    </li>
+  <% end %>
+</ul>

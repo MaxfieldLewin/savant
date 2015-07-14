@@ -1,5 +1,8 @@
 require 'rails_helper'
-
+require 'spec_helper'
 RSpec.describe Artist, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "validations" do
+    subject { build(:artist) }
+    it { should validate_presence_of(:name) }
+  end
 end

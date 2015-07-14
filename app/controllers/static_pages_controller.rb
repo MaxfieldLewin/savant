@@ -1,8 +1,7 @@
 class StaticPagesController < ApplicationController
 
   def root
-    @artists = Artist.all
-    @songs = Song.all
+    @songs = Song.includes(:artist).all.limit(10)
   end
 
 end
