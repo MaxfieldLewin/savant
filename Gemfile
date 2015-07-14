@@ -10,10 +10,10 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'bcrypt', '~> 3.1.7'
 
-
 group :development, :test do
+  gem 'rspec-rails'
+
   gem 'annotate'
-  gem 'byebug'
   gem 'pry-rails'
   gem 'better_errors'
   gem 'binding_of_caller'
