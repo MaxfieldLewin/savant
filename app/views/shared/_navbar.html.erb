@@ -1,13 +1,24 @@
-<% if logged_in? %>
-Welcome, <%= current_user.username %>
-<br>
-<form action="<%= session_url %>" method="post">
-  <%= form_auth_token %>
-  <%= form_http_method("delete") %>
-  <button>Log Out</button>
-</form>
-<br>
-<% else %>
-<a href="<%= new_session_url %>"> Log in </a>
-<br>
-<% end %>
+<nav class="nav-main group">
+  <ul class="nav-tag-list left">
+    <li class="nav-tag-item">Rap</li>
+    <li class="nav-tag-item">Pop</li>
+    <li class="nav-tag-item">Rock</li>
+    <li class="nav-tag-item">R&B</li>
+    <li class="nav-tag-item">News</li>
+    <li class="nav-tag-item">Tech</li>
+    <li class="nav-tag-item">Law</li>
+  </ul>
+
+  <ul class="nav-tag-list right"
+  <% if logged_in? %>
+    <form class="nav-user-link" action="<%= session_url %>" method="post">
+      <%= form_auth_token %>
+      <%= form_http_method("delete") %>
+      <button>Log Out</button>
+    </form>
+  <% else %>
+    <a class="nav-user-link" href="<%= new_user_url %>"> Sign Up </a>
+    <a class="nav-user-link" href="<%= new_session_url %>"> Sign In </a>
+  <% end %>
+  </ul>
+</nav>
