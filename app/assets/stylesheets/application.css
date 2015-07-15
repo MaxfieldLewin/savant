@@ -129,7 +129,7 @@ body {
   z-index: 3;
 }
 
-.modal-signup {
+.modal-signup, .modal-signin {
   position: relative;
   display: block;
   background-color: #292929;
@@ -137,6 +137,6 @@ body {
   padding: 20px;
 }
 
-.modal-signup input {
+.modal-signup input, .modal-signin input {
   display: block;
 }

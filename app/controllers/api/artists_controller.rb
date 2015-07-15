@@ -1,6 +1,12 @@
 class Api::ArtistsController < ApplicationController
 
-  def edit
+  def create
+    @artist = Artist.new(artist_params)
+    if @artist.save
+      render :show
+    else
+      render json: @artist.errors.full_messages, status: 401
+    end
   end
 
   def update

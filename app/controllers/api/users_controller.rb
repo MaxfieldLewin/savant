@@ -1,5 +1,6 @@
 class Api::UsersController < ApplicationController
   wrap_parameters :user, include: [:username, :email, :password]
+
   def create
     @user = User.new(user_params)
 

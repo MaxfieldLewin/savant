@@ -43,7 +43,6 @@ Savant.Views.NavBar = Backbone.View.extend({
   submitSignup: function (event) {
     event.preventDefault();
     var attrs = $(event.target).serializeJSON();
-    this.model = new Savant.Models.User();
     this.model.save(attrs["user"], {
       success: function () {
         Savant.router.logIn(this.model);
@@ -52,17 +51,45 @@ Savant.Views.NavBar = Backbone.View.extend({
       }.bind(this),
 
       error: function (model, response) {
-        console.log(response);
-        console.log(model);
-        chaaald = model;
         response.responseJSON.forEach(function(error){
-          this.$pageRef.find(".modal-signup").append(error + "<br>");
+          this.$pageRef.find(".modal-signup .errors").html(error + "<br>");
         }.bind(this));
         this.$pageRef.find("#username").val(model.get("username"));
         this.$pageRef.find("#email").val(model.get("email"));
         this.$pageRef.find(".modal-signup").one("submit", this.submitSignup.bind(this));
       }.bind(this)
     });
+  },
+
+  submitSignin: function (event) {
+    event.preventDefault();
+    var credentials = $(event.target).serializeJSON();
+    this.model.set("login_string", credentials["login_string"])
+    var loginReq = jQuery.ajax({
+      type: "POST",
+      url: "/session",
+      data: credentials,
+      dataType: "JSON",
+      
+      success: function (data) {
+        console.log(data);
+        this.model.set(data);
+        Savant.router.logIn(this.model);
+        this.cancelModal();
+        this.render();
+      }.bind(this),
+
+      error: function (response) {
+        console.log(response);
+        response.responseText.forEach(function(error){
+
+          this.$pageRef.find(".modal-signin > .errors").html(error + "<br>");
+        }.bind(this));
+        this.$pageRef.find("#loginString").val(model.get("login_string"));
+        this.$pageRef.find(".modal-signin").one("submit", this.submitSignup.bind(this));
+      }.bind(this)
+    })
+
   }
 
 })
