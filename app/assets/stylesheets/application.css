@@ -77,6 +77,18 @@ body {
 
 /* main content area*/
 .content {
+  position: absolute;
+  width: 100%;
+}
+
+.big-title {
+  font-family: 'Varela Round', sans-serif;
+  display: block;
+  font-size: 80px;
+  margin: 40px;
+  color: black;
+  text-shadow: -4px 6px #ffff64;
+  text-align: center;
 }
 
 /* modals */
