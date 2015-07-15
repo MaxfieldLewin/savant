@@ -1,24 +1,33 @@
-<nav class="nav-main group">
-  <ul class="nav-tag-list left">
-    <li class="nav-tag-item">Rap</li>
-    <li class="nav-tag-item">Pop</li>
-    <li class="nav-tag-item">Rock</li>
-    <li class="nav-tag-item">R&B</li>
-    <li class="nav-tag-item">News</li>
-    <li class="nav-tag-item">Tech</li>
-    <li class="nav-tag-item">Law</li>
-  </ul>
+<nav class="nav-main">
+  <div class="nav-layer group">
+    <ul class="nav-tag-list left">
+      <li class="nav-tag-item">Rap</li>
+      <li class="nav-tag-item">Pop</li>
+      <li class="nav-tag-item">Rock</li>
+      <li class="nav-tag-item">R&B</li>
+      <li class="nav-tag-item">News</li>
+      <li class="nav-tag-item">Tech</li>
+      <li class="nav-tag-item">Law</li>
+    </ul>
 
-  <ul class="nav-tag-list right"
-  <% if logged_in? %>
-    <form class="nav-user-link" action="<%= session_url %>" method="post">
-      <%= form_auth_token %>
-      <%= form_http_method("delete") %>
-      <button>Log Out</button>
-    </form>
-  <% else %>
-    <a class="nav-user-link" href="<%= new_user_url %>"> Sign Up </a>
-    <a class="nav-user-link" href="<%= new_session_url %>"> Sign In </a>
-  <% end %>
-  </ul>
+    <div class="nav-tag-list right">
+    <% if logged_in? %>
+      <form class="nav-user-link" action="<%= session_url %>" method="post">
+        <%= form_auth_token %>
+        <%= form_http_method("delete") %>
+        <button>Log Out</button>
+      </form>
+    <% else %>
+      <a class="nav-user-link" href="<%= new_user_url %>"> Sign Up </a>
+      <a class="nav-user-link" href="<%= new_session_url %>"> Sign In </a>
+    <% end %>
+    </div>
+  </div>
+
+  <div class="nav-layer group">
+    <div class="nav-tag-list right">
+      <a href="<%= new_artist_url %>"> Add an Artist </a>
+      <a href="<%= new_song_url %>"> Add a Song </a>
+    </div>
+  </div>
 </nav>

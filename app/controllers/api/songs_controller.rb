@@ -1,4 +1,4 @@
-Api::SongsController < ApplicationController
+class Api::SongsController < ApplicationController
 
   def edit
   end
@@ -10,11 +10,11 @@ Api::SongsController < ApplicationController
   end
 
   def show
-    @song = Song.find(params[:id])
+    @song = Song.includes(:artist).find(params[:id])
   end
 
   def index
-    @song = Song.all
+    @songs = Song.includes(:artist).find_by_sql("SELECT * FROM songs ORDER BY RANDOM() LIMIT 10")
   end
 
   private

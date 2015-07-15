@@ -27,11 +27,14 @@
    text-align: inherit;
    color: inherit;
    background: transparent;
+   -webkit-appearance: none;
  }
 
  ul, ol {
    list-style: none;
    -webkit-padding-start: 0px;
+   -webkit-margin-before: 0px;
+   -webkit-margin-after: 0px;
  }
 
 /* clearfix */
@@ -52,6 +55,9 @@ body {
 .nav-main {
   color: #ccc;
   background-color: #151515;
+}
+
+.nav-layer {
   border-bottom: 1px solid #555;
   width: 100%;
   display: block;
@@ -92,7 +98,7 @@ body {
 }
 
 /* modals */
-.modal-container {
+#modal-container {
   display: none;
 }
 

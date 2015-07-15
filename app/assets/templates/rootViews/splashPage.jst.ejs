@@ -1,0 +1,11 @@
+<h1 class="big-title"> SAVANT </h1>
+<h2 class="small-slogan"> Annotate all the things. </h2>
+
+<ul>
+  <% songs.forEach(function (song) { %>
+    <% console.log("in splash template") %>
+    <li class="splash-song">
+      "<%= song.get("title") %>" by <%= song.get("name") %>
+    </li>
+  <% }) %>
+</ul>
