@@ -11,7 +11,7 @@ Savant.Routers.Router = Backbone.Router.extend({
 
   installNav: function () {
     user = new Savant.Models.User();
-    var nav = new Savant.Views.NavBar({ model: user, pageRef: $(document) })
+    var nav = new Savant.Views.NavBar({ model: user, $pageRef: $(document) })
     $("#nav-container").html(nav.render().$el);
   },
 

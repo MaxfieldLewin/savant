@@ -6,7 +6,6 @@ Savant.Views.SplashPage = Backbone.CompositeView.extend({
   },
 
   render: function () {
-    console.log("in splash render");
     this.$el.html(this.template({ songs: this.collection }));
     return this;
   }
