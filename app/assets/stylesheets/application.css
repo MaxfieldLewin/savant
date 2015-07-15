@@ -75,5 +75,31 @@ body {
   display: inline-block;
 }
 
+/* main content area*/
 .content {
+}
+
+/* modals */
+.modal-container {
+  display: none;
+}
+
+.modal-container.is-open {
+  display: block;
+}
+
+.modal-screen {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  rgba(0,0,0,0.8);
+}
+
+.modal-form {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
