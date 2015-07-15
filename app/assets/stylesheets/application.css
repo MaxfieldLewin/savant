@@ -37,6 +37,10 @@
    -webkit-margin-after: 0px;
  }
 
+ input, textarea, button {
+   outline: none;
+ }
+
 /* clearfix */
 
 .group:after {
@@ -99,10 +103,11 @@ body {
 
 /* modals */
 #modal-container {
+  background: pink;
   display: none;
 }
 
-.modal-container.is-open {
+#modal-container.is-open {
   display: block;
 }
 
@@ -118,6 +123,20 @@ body {
 
 .modal-form {
   position: absolute;
+  top: 50%;
   left: 50%;
   transform: translateX(-50%);
+  z-index: 3;
+}
+
+.modal-signup {
+  position: relative;
+  display: block;
+  background-color: #292929;
+  border: 1px solid #444;
+  padding: 20px;
+}
+
+.modal-signup input {
+  display: block;
 }
