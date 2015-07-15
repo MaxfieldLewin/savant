@@ -2,10 +2,17 @@ Savant.Routers.Router = Backbone.Router.extend({
   initialize: function (options) {
     this.$rootEl = options.$rootEl;
     this.songs = options.songs;
+    this.installNav();
   },
 
   routes: {
     "":"splashPage"
+  },
+
+  installNav: function () {
+    user = new Savant.Models.User();
+    var nav = new Savant.Views.NavBar({ model: user })
+    $("#nav-container").html(nav.render().$el);
   },
 
   splashPage: function () {

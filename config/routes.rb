@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :songs
 
   namespace :api, defaults: {format: :json} do
+    resources :users, only: [:new, :create, :show]
     resources :artists, except: [:new, :create]
     resources :songs, except: [:new, :create ]
   end
