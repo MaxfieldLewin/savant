@@ -11,8 +11,8 @@
     </ul>
 
     <div class="nav-tag-list right">
-    <% if (false) { %>
-        <a class="nav-user-link" href="/#users/logout" >Log Out</a>
+    <% if (user.get("login_status")) { %>
+        <a class="nav-user-link" id="nav-logout" href="/#users/logout" >Log Out</a>
     <% } else { %>
       <a class="nav-user-link" id="nav-signup" href="/#signup"> Sign Up </a>
       <a class="nav-user-link" id="nav-signin" href="/#signin"> Sign In </a>

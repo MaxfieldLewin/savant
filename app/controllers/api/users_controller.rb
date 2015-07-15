@@ -1,26 +1,24 @@
 class Api::UsersController < ApplicationController
-
-  def new
-    @user = User.new
-  end
-
+  wrap_parameters :user, include: [:username, :email, :password]
   def create
     @user = User.new(user_params)
+
     if @user.save
-      redirect_to root_url
+      log_in!(@user)
+      @user.login_status = true
+      render :show
     else
-      render :new
+      render json: @user.errors.full_messages, status: 401
     end
+
   end
 
   def update
   end
 
-  def edit
-  end
-
   def show
     @user = User.find(params[:id])
+    render :show
   end
 
   private

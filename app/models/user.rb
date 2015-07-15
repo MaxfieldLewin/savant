@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   after_initialize :ensure_session_token
 
   attr_reader :password
-  attr_accessor :login_string
+  attr_accessor :login_string, :login_status
 
   def self.generate_session_token
     SecureRandom::urlsafe_base64(16)

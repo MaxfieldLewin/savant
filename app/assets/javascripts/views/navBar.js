@@ -26,8 +26,15 @@ Savant.Views.NavBar = Backbone.View.extend({
     this.$pageRef.find(".modal-signup").one("submit", this.submitSignup.bind(this));
   },
 
-  cancelModal: function (event) {
-    console.log("in cancel modal");
+  signinModal: function (event) {
+    var modal = this.$pageRef.find("#modal-container")
+    modal.find(".modal-form").html(this.signinForm({ user: this.model }));
+    modal.addClass("is-open");
+    this.$pageRef.find(".modal-screen").one("click", this.cancelModal.bind(this));
+    this.$pageRef.find(".modal-signin").one("submit", this.submitSignin.bind(this));
+  },
+
+  cancelModal: function () {
     var modal = this.$pageRef.find("#modal-container")
     modal.find(".modal-form").empty();
     modal.removeClass("is-open");
@@ -35,16 +42,25 @@ Savant.Views.NavBar = Backbone.View.extend({
 
   submitSignup: function (event) {
     event.preventDefault();
-    console.log(event);
     var attrs = $(event.target).serializeJSON();
-    this.model = new Savant.Models.User(attrs);
-    this.model.save({
+    this.model = new Savant.Models.User();
+    this.model.save(attrs["user"], {
       success: function () {
-
+        Savant.router.logIn(this.model);
+        this.cancelModal();
+        this.render();
       }.bind(this),
 
-      error: funciton (model) {
-
+      error: function (model, response) {
+        console.log(response);
+        console.log(model);
+        chaaald = model;
+        response.responseJSON.forEach(function(error){
+          this.$pageRef.find(".modal-signup").append(error + "<br>");
+        }.bind(this));
+        this.$pageRef.find("#username").val(model.get("username"));
+        this.$pageRef.find("#email").val(model.get("email"));
+        this.$pageRef.find(".modal-signup").one("submit", this.submitSignup.bind(this));
       }.bind(this)
     });
   }

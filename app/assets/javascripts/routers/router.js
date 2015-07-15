@@ -27,6 +27,12 @@ Savant.Routers.Router = Backbone.Router.extend({
 
     this.$rootEl.html(view.render().$el);
     this._currentRootView = view;
+  },
+
+  logIn: function (user) {
+    if(user && user.get("login_status")){
+      this._currentUser = user;
+    }
   }
 
 })

@@ -1,0 +1,15 @@
+<div class="modal-signin">
+  <h1>Log In to Savant</h1>
+
+  <form  action="#" method="post">
+    <%= form_auth_token %>
+    <label for="loginString">Username or Email</label>
+    <input id="loginString" type="text" name="login_string" value="<%= user.login_string %>">
+
+
+    <label for="password">Password</label>
+    <input id="password" type="password" name="password">
+
+    <button>Submit</button>
+  </form>
+</div>

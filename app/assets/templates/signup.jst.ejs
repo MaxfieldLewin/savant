@@ -1,16 +1,16 @@
 <div class="modal-signup">
-<h1>Sign Up for Savant</h1>
+  <h1>Sign Up for Savant</h1>
 
-<form  action="#" method="post">
-  <label for="username">Username</label>
-  <input id="username" type="text" name="user[username]" value="<%= user.username %>">
+  <form  action="#" method="post">
+    <label for="username">Username</label>
+    <input id="username" type="text" name="user[username]" value="<%= user.get('username') %>">
 
-  <label for="email">Email</label>
-  <input id="email" type="text" name="user[email]" value="<%= user.email %>">
+    <label for="email">Email</label>
+    <input id="email" type="text" name="user[email]" value="<%= user.get('email') %>">
 
-  <label for="password">Password</label>
-  <input id="password" type="password" name="user[password]">
+    <label for="password">Password</label>
+    <input id="password" type="password" name="user[password]">
 
-  <button>Submit</button>
-</form>
+    <button>Submit</button>
+  </form>
 </div>
