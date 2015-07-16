@@ -51,8 +51,9 @@ Savant.Views.NavBar = Backbone.View.extend({
       }.bind(this),
 
       error: function (model, response) {
+        this.$pageRef.find(".modal-signup > .errors").empty();
         response.responseJSON.forEach(function(error){
-          this.$pageRef.find(".modal-signup .errors").html(error + "<br>");
+          this.$pageRef.find(".modal-signup > .errors").append(error + "<br>");
         }.bind(this));
         this.$pageRef.find("#username").val(model.get("username"));
         this.$pageRef.find("#email").val(model.get("email"));
@@ -70,9 +71,8 @@ Savant.Views.NavBar = Backbone.View.extend({
       url: "/session",
       data: credentials,
       dataType: "JSON",
-      
+
       success: function (data) {
-        console.log(data);
         this.model.set(data);
         Savant.router.logIn(this.model);
         this.cancelModal();
@@ -80,10 +80,9 @@ Savant.Views.NavBar = Backbone.View.extend({
       }.bind(this),
 
       error: function (response) {
-        console.log(response);
+        this.$pageRef.find(".modal-signin > .errors").empty();
         response.responseText.forEach(function(error){
-
-          this.$pageRef.find(".modal-signin > .errors").html(error + "<br>");
+          this.$pageRef.find(".modal-signin > .errors").append(error + "<br>");
         }.bind(this));
         this.$pageRef.find("#loginString").val(model.get("login_string"));
         this.$pageRef.find(".modal-signin").one("submit", this.submitSignup.bind(this));

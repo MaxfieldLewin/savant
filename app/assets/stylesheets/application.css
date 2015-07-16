@@ -37,8 +37,19 @@
    -webkit-margin-after: 0px;
  }
 
- input, textarea, button {
+ input, textarea, button, select {
    outline: none;
+ }
+
+ select, textarea {
+   -webkit-appearance: none;
+ }
+
+ textarea {
+   width: 100%;
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+  box-sizing: border-box;
  }
 
 /* clearfix */
@@ -68,7 +79,7 @@ body {
 }
 
 .nav-layer-fixed {
-  max-width: 1000px;
+  max-width: 1040px;
   margin: auto;
   border-right: 1px solid #555;
   padding: 8px 5px;
@@ -124,9 +135,10 @@ body {
 }
 
 /* main content area*/
-.content {
-  position: absolute;
-  width: 100%;
+#content {
+  display: block;
+  margin: auto;
+  max-width: 1040px;
 }
 
 .big-title {
@@ -179,4 +191,64 @@ body {
 
 .modal-signup input, .modal-signin input {
   display: block;
+}
+
+/* Create Text From */
+
+.form-header {
+  font-family: 'Abel', sans-serif;
+  font-size: 40px;
+  font-weight: bolder;
+  color: #fff;
+  display: block;
+  margin: 20px 0px 10px 1px;
+}
+
+.input-group {
+  display: block;
+  border-bottom: 1px solid #303030;
+}
+
+.input-group > div {
+  width: 100%;
+  display: block;
+  float: left;
+  margin: 20px;
+}
+
+.song-form label {
+  font-family: 'Abel', sans-serif;
+  font-size: 15px;
+}
+
+.song-form-byline {
+  width: 300px;
+}
+
+.song-form-byline, .lyrics-textarea {
+  font-size; 15px;
+  border: 1px solid #bbb;
+  border-radius: 2px;
+  padding: 5px;
+}
+
+.input-textarea-container{
+  width: 100%;
+  padding: 20px 0px;;
+}
+
+.lyrics-textarea {
+  width: 100%;
+  min-height: 480px;
+  resize: none;
+}
+
+.form-button {
+  color: #ccc;
+  font-size: 13px;
+  background-color: #262626;
+  border: 1px solid #444;
+  border-radius: 2px;
+  padding: 5px 9px;
+  margin: 3px 4px 5px 0px;
 }

@@ -6,7 +6,8 @@ Savant.Routers.Router = Backbone.Router.extend({
   },
 
   routes: {
-    "":"splashPage"
+    "":"splashPage",
+    "songs/new":"newSong"
   },
 
   installNav: function () {
@@ -18,6 +19,12 @@ Savant.Routers.Router = Backbone.Router.extend({
   splashPage: function () {
     var view = new Savant.Views.SplashPage({ collection: this.songs })
     this.swapRootView(view);
+  },
+
+  newSong: function () {
+    var song = new Savant.Models.Song();
+    var view = new Savant.Views.NewSong({ model: song, collection: this.songs });
+    this.swapRootView(view)
   },
 
   swapRootView: function (view) {

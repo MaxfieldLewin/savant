@@ -1,0 +1,33 @@
+<form  class="song-form" action="#" method="post">
+  <h1 class="form-header">New Text</h1>
+
+  <div class="input-group group">
+    <div>
+      <label for="artist">Artist:</label>
+      <br>
+      <select id="artist" class="song-form-byline" name="song[artist_id]">
+        <% artists.forEach( function(artist) {  %>
+          <option value="<%= artist.id %>" <%= artist.id == song.get('artist_id') ? "selected" : ""  %> >
+            <%= artist.get("name") %>
+          </option>
+        <% }) %>
+      </select>
+    </div>
+
+    <div>
+      <label for="title">Title:</label>
+      <br>
+      <input id="title" type="text" class="song-form-byline" name="song[title]" value="<%= song.get('title') %>" placeholder="Title">
+    </div>
+  </div>
+
+  <div class="input-textarea-container">
+    <label for="contents">Lyrics/Contents</label>
+    <br>
+    <textarea class="lyrics-textarea" id="contents" name="song[contents]"><%= song.get('contents') %></textarea>
+  </div>
+  
+  <div class="errors"></div>
+  <button class="form-button">Submit</button>
+
+</form>
