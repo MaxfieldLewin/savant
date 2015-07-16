@@ -18,6 +18,7 @@ Savant.Routers.Router = Backbone.Router.extend({
   },
 
   splashPage: function () {
+    this.songs.fetch();
     var view = new Savant.Views.SplashPage({ collection: this.songs })
     this.swapRootView(view);
   },

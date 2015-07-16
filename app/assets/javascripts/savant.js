@@ -5,7 +5,6 @@ window.Savant = {
   Routers: {},
   initialize: function() {
     var songs = new Savant.Collections.Songs();
-    songs.fetch();
     Savant.router = new Savant.Routers.Router({ $rootEl: $("#content"), songs: songs })
     Backbone.history.start();
   }

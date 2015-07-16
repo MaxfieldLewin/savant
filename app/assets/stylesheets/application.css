@@ -274,3 +274,16 @@ body {
   padding: 5px 9px;
   margin: 3px 4px 5px 0px;
 }
+
+/* Show Song */
+
+.song-body-container {
+  border-left: 1px solid #333;
+}
+
+.formatted-lyrics {
+  color: #eee;
+  font-family: sans-serif;
+  font-size: 15px;
+  line-size: 140%;
+}

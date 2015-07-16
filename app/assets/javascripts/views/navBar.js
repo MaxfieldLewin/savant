@@ -92,8 +92,6 @@ Savant.Views.NavBar = Backbone.View.extend({
   },
 
   toggleSmallTitle: function (router, route) {
-    console.log(route);
-    console.log(typeof route);
     if (route === "splashPage"){
       $(".small-title").removeClass("visible");
     } else {
