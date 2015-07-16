@@ -10,7 +10,8 @@ Savant.Views.ShowSong = Backbone.CompositeView.extend({
   },
 
   render: function () {
-    this.$el.html(this.template({ song: this.model, }))
+    this.$el.html(this.template({ song: this.model }));
+    return this;
   }
 
 })

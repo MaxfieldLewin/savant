@@ -11,6 +11,7 @@ Savant.Views.NavBar = Backbone.View.extend({
   initialize: function (options) {
     this.$pageRef = options.$pageRef;
     this.listenTo(this.model, "sync", this.render);
+    this.listenTo(Backbone.history, "route", this.toggleSmallTitle);
   },
 
   render: function () {
@@ -88,7 +89,16 @@ Savant.Views.NavBar = Backbone.View.extend({
         this.$pageRef.find(".modal-signin").one("submit", this.submitSignup.bind(this));
       }.bind(this)
     })
+  },
 
+  toggleSmallTitle: function (router, route) {
+    console.log(route);
+    console.log(typeof route);
+    if (route === "splashPage"){
+      $(".small-title").removeClass("visible");
+    } else {
+      $(".small-title").addClass("visible");
+    }
   }
 
 })

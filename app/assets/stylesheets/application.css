@@ -75,14 +75,17 @@ body {
 .nav-layer {
   border-bottom: 1px solid #555;
   width: 100%;
+  height: 45px;
   display: block;
 }
 
 .nav-layer-fixed {
   max-width: 1040px;
+  height: 29px;
   margin: auto;
   border-right: 1px solid #555;
   padding: 8px 5px;
+
 }
 
 .nav-tag-list {
@@ -90,6 +93,7 @@ body {
   font-size: 16px;
   text-transform: uppercase;
   color: #888;
+
 }
 
 .nav-tag-list > li {
@@ -124,6 +128,11 @@ body {
   float: right;
 }
 
+.nav-group {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
 
 
 .nav-user-link {
@@ -141,16 +150,29 @@ body {
   max-width: 1040px;
 }
 
-.big-title {
+.title {
   font-family: 'Varela Round', sans-serif;
   font-weight: bold;
   display: block;
+  color: black;
+}
+
+.big-title {
   font-size: 76px;
   margin: 40px;
-  color: black;
   text-shadow: -7px 4px #ffff64;
   text-align: center;
   letter-spacing: 12px;
+}
+
+.small-title {
+  display: none;
+}
+
+.small-title.visible {
+  display: inline-block;
+  font-size: 20px;
+  text-shadow: -2px 1px #ffff64;
 }
 
 /* modals */
