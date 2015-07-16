@@ -1,6 +1,0 @@
-<h1>Add Artist</h1>
-<% if @artist.errors.any? %>
-  <%= render partial: "shared/errors", locals: {model: @artist} %>
-<% end %>
-
-<%= render partial: "form", locals: {artist: @artist, edit: false} %>

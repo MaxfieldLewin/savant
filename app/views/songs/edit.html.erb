@@ -1,6 +1,0 @@
-<h1>Edit Song</h1>
-<% if @song.errors.any? %>
-  <%= render partial: "shared/errors", locals: {model: @song} %>
-<% end %>
-
-<%= render partial: "form", locals: {artists: @artists, song: @song, edit: true} %>
