@@ -4,7 +4,7 @@
 <ul>
   <% songs.forEach(function (song) { %>
     <li class="splash-song">
-      "<%= song.get("title") %>" by <%= song.get("name") %>
+      "<%= song.get("title") %>" by <%= song.get("artist_name") %>
     </li>
   <% }) %>
 </ul>

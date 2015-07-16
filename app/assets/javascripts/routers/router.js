@@ -7,7 +7,8 @@ Savant.Routers.Router = Backbone.Router.extend({
 
   routes: {
     "":"splashPage",
-    "songs/new":"newSong"
+    "songs/new":"newSong",
+    "songs/:id":"showSong"
   },
 
   installNav: function () {
@@ -25,6 +26,12 @@ Savant.Routers.Router = Backbone.Router.extend({
     var song = new Savant.Models.Song();
     var view = new Savant.Views.NewSong({ model: song, collection: this.songs });
     this.swapRootView(view)
+  },
+
+  showSong: function (id) {
+    var song = this.songs.getOrFetch({ id: id });
+    var view = new Savant.Views.ShowSong( { model: song })
+    this.swapRootView(view);
   },
 
   swapRootView: function (view) {
