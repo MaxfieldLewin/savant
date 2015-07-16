@@ -7,6 +7,7 @@ Savant.Views.ShowLyrics = Backbone.CompositeView.extend({
 
   render: function () {
     this.$el.html(this.template({ song: this.model }));
+    //this.installFragments()
     return this;
   }
 })
