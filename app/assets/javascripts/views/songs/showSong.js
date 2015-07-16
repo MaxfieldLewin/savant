@@ -1,12 +1,11 @@
 Savant.Views.ShowSong = Backbone.CompositeView.extend({
-  template: JST['rootViews/showSong'],
+  template: JST['songs/showSong'],
   events: {
     "click .edit-lyrics":"editLyrics"
   },
 
   lyricsSelector: ".song-lyrics-container",
   annotationsSelector: ".annotation-container",
-
 
   render: function () {
     this.$el.html(this.template({ song: this.model }));

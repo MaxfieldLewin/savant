@@ -1,5 +1,5 @@
 Savant.Views.NewSong = Backbone.View.extend({
-  template: JST['rootViews/newSong'],
+  template: JST['songs/newSong'],
 
   events: {
     "submit form":"submitSong"

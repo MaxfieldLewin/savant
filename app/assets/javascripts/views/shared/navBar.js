@@ -1,7 +1,7 @@
 Savant.Views.NavBar = Backbone.View.extend({
-  template: JST['navBar'],
-  signupForm: JST['signup'],
-  signinForm: JST['signin'],
+  template: JST['shared/navBar'],
+  signupForm: JST['shared/signup'],
+  signinForm: JST['shared/signin'],
 
   events: {
     "click #nav-signup":"signupModal",

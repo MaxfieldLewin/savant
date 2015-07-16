@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150714190452) do
+ActiveRecord::Schema.define(version: 20150716194339) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,16 @@ ActiveRecord::Schema.define(version: 20150714190452) do
   end
 
   add_index "artists", ["name"], name: "index_artists_on_name", using: :btree
+
+  create_table "song_fragments", force: :cascade do |t|
+    t.integer  "song_id",      null: false
+    t.integer  "offset_start", null: false
+    t.integer  "offset_end",   null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "song_fragments", ["song_id"], name: "index_song_fragments_on_song_id", using: :btree
 
   create_table "songs", force: :cascade do |t|
     t.integer  "artist_id",   null: false

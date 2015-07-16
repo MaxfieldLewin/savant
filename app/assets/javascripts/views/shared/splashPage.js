@@ -1,5 +1,5 @@
 Savant.Views.SplashPage = Backbone.CompositeView.extend({
-  template: JST['rootViews/splashPage'],
+  template: JST['shared/splashPage'],
 
   initialize: function () {
     this.listenTo(this.collection, "sync", this.render);
