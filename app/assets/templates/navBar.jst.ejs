@@ -1,29 +1,33 @@
 <nav class="nav-main">
-  <div class="nav-layer group">
-    <ul class="nav-tag-list left">
-      <li class="nav-tag-item">Rap</li>
-      <li class="nav-tag-item">Pop</li>
-      <li class="nav-tag-item">Rock</li>
-      <li class="nav-tag-item">R&B</li>
-      <li class="nav-tag-item">News</li>
-      <li class="nav-tag-item">Tech</li>
-      <li class="nav-tag-item">Law</li>
-    </ul>
+  <div class="nav-layer">
+    <div class="nav-layer-fixed group">
+      <ul class="nav-group nav-tag-list left">
+        <li class="nav-tag-item">Rap</li>
+        <li class="nav-tag-item">Pop</li>
+        <li class="nav-tag-item">Rock</li>
+        <li class="nav-tag-item">R&B</li>
+        <li class="nav-tag-item">News</li>
+        <li class="nav-tag-item">Tech</li>
+        <li class="nav-tag-item">Law</li>
+      </ul>
 
-    <div class="nav-tag-list right">
-    <% if (user.get("login_status")) { %>
-        <a class="nav-user-link" id="nav-logout" href="/#users/logout" >Log Out</a>
-    <% } else { %>
-      <a class="nav-user-link" id="nav-signup" href="/#signup"> Sign Up </a>
-      <a class="nav-user-link" id="nav-signin" href="/#signin"> Sign In </a>
-    <% } %>
+      <div class="nav-group right">
+      <% if (user.get("login_status")) { %>
+          <a class="nav-user-link" id="nav-logout" href="/#users/logout" >Log Out</a>
+      <% } else { %>
+        <a class="nav-user-link" id="nav-signup" href="/#signup"> Sign Up </a>
+        <a class="nav-user-link" id="nav-signin" href="/#signin"> Sign In </a>
+      <% } %>
+      </div>
     </div>
   </div>
 
-  <div class="nav-layer group">
-    <div class="nav-tag-list right">
-      <a href="/#artists/new"> Add an Artist </a>
-      <a href="/#songs/new"> Add a Song </a>
+  <div class="nav-layer">
+    <div class="nav-layer-fixed group">
+      <div class="nav-group right">
+        <a href="/#artists/new"> Add an Artist </a>
+        <a href="/#songs/new"> Add a Song </a>
+      </div>
     </div>
   </div>
 </nav>
