@@ -1,6 +1,7 @@
 class Api::SongFragmentsController < ApplicationController
 
   def create
+
   end
 
   def update
@@ -17,6 +18,6 @@ class Api::SongFragmentsController < ApplicationController
 
   private
     def song_fragment_params
-      params.require(:song_fragment).permit(:song_id, :offset)
+      params.require(:song_fragment).permit(:song_id, :offset_start, :offset_end)
     end
 end
