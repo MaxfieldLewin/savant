@@ -30,9 +30,13 @@ Savant.Routers.Router = Backbone.Router.extend({
   },
 
   showSong: function (id) {
-    var song = this.songs.getOrFetch({ id: id });
-    var view = new Savant.Views.ShowSong( { model: song })
-    this.swapRootView(view);
+    var song = new Savant.Models.Song({ id: id })
+    song.fetch({
+      success: function () {
+        var view = new Savant.Views.ShowSong( { model: song })
+        this.swapRootView(view);
+      }.bind(this)
+    })
   },
 
   swapRootView: function (view) {
