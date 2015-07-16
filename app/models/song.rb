@@ -4,5 +4,8 @@ class Song < ActiveRecord::Base
 
   belongs_to :artist
 
-  has_many :song_fragments
+  has_many :song_fragments,
+    class_name: "SongFragment",
+    foreign_key: :song_id,
+    primary_key: :id
 end
