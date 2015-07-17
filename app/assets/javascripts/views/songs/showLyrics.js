@@ -6,7 +6,8 @@ Savant.Views.ShowLyrics = Backbone.CompositeView.extend({
 
   events: {
     "click a":"displayAnnotation",
-    "click :not('a'), :not('.details-container')":"installDescription"
+    "clickAway":"displayDescription",
+    "mouseup":"maybeAnnotate"
   },
 
   initialize: function () {
@@ -16,7 +17,7 @@ Savant.Views.ShowLyrics = Backbone.CompositeView.extend({
   render: function () {
     this.$el.html(this.template({ song: this.model }));
     this.installFragments();
-    this.installDescription();
+    this.displayDescription();
     return this;
   },
 
@@ -24,7 +25,6 @@ Savant.Views.ShowLyrics = Backbone.CompositeView.extend({
     var lyrics = $(".formatted-lyrics").text();
     var workingLyrics = lyrics.slice(0, lyrics.length);
     var workingOffset = 0;
-    var fragmentIds = [];
     this.model.songFragments().forEach( function (fragment) {
       var fragmentRawText = lyrics.substring(fragment.get("offset_start"), fragment.get("offset_end") + 1)
       var fragmentLink = fragmentRawText.link('/#songFragments/' + fragment.id);
@@ -32,7 +32,6 @@ Savant.Views.ShowLyrics = Backbone.CompositeView.extend({
         //need to ensure repeated lyrics don't get replaced by the same fragment
         if (offset === fragment.get("offset_start") + workingOffset){
           workingOffset += (fragmentLink.length - fragmentRawText.length);
-          fragmentIds.push(fragment.id);
           return fragmentLink;
         } else {
           return fragmentRawText;
@@ -41,24 +40,23 @@ Savant.Views.ShowLyrics = Backbone.CompositeView.extend({
     })
     $(".formatted-lyrics").html(workingLyrics);
 
-    $(".formatted-lyrics a").each( function(link){
-      $(link).data("fragmentId", fragmentIds.shift());
-    });
   },
 
-  installDescription: function () {
-    var descriptionView = new Savant.Views.ShowDescription({ model: this.model })
+  displayDescription: function () {
+    var descriptionView = new Savant.Views.ShowDescription({ model: this.model });
     this.swapDetailsView(descriptionView);
   },
 
   displayAnnotation: function (event) {
     event.preventDefault();
     var fragmentId = $(event.currentTarget).attr("href").slice(16);
+    //todo: find a better waty to do this (16 is len of '/#songFragments/')
+
     var fragment = this.model.songFragments().get(fragmentId);
     var lyricView = this;
     fragment.fetch({
       success: function () {
-        var annotationView = new Savant.Views.ShowAnnotation({ model: fragment.annotation() })
+        var annotationView = new Savant.Views.ShowAnnotation({ model: fragment.annotation() });
         lyricView.swapDetailsView(annotationView);
       }
     })
@@ -66,9 +64,15 @@ Savant.Views.ShowLyrics = Backbone.CompositeView.extend({
     //todo: loading display
   },
 
+  maybeAnnotate: function (event) {
+    if($(event.target)[0].className === "formatted-lyrics"){
+      console.log(window.getSelection())
+    }
+  },
+
   swapDetailsView: function (view) {
     if(this._detailsView){
-      this.removeSubview(this.detailsSelector, this._detailsView)
+      this.removeSubview(this.detailsSelector, this._detailsView);
       $(this.detailsSelector).empty();
     }
 
