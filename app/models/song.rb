@@ -7,5 +7,6 @@ class Song < ActiveRecord::Base
   has_many :song_fragments,
     class_name: "SongFragment",
     foreign_key: :song_id,
-    primary_key: :id
+    primary_key: :id,
+    inverse_of: :song
 end

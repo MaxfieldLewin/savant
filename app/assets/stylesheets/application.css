@@ -287,3 +287,12 @@ body {
   font-size: 15px;
   line-size: 140%;
 }
+
+.formatted-lyrics > a {
+  background-color: #353535;
+}
+
+.formatted-lyrics > a:hover {
+  background-color: #ffff64;
+  color: #000;
+}
