@@ -8,7 +8,7 @@ class SongFragment < ActiveRecord::Base
     primary_key: :id,
     inverse_of: :song_fragments
 
-  has_one: :annotation,
+  has_one :annotation,
     class_name: "Annotation",
     foreign_key: :song_fragment_id,
     primary_key: :id,

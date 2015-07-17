@@ -1,5 +1,10 @@
 Savant.Views.ShowLyrics = Backbone.CompositeView.extend({
   template: JST['songs/showLyrics'],
+  lyricsSelector: ".formatted-lyrics",
+  detailsSelector: ".details-container",
+  events: {
+    "click a":"displayAnnotation"
+  }
 
   initialize: function () {
     this.listenTo(this.model, "sync change", this.render);

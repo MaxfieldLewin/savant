@@ -4,8 +4,7 @@ Savant.Views.ShowSong = Backbone.CompositeView.extend({
     "click .edit-lyrics":"editLyrics"
   },
 
-  lyricsSelector: ".song-lyrics-container",
-  annotationsSelector: ".annotation-container",
+  containerSelector: ".song-lyrics-and-details-container",
 
   render: function () {
     this.$el.html(this.template({ song: this.model }));
@@ -15,17 +14,17 @@ Savant.Views.ShowSong = Backbone.CompositeView.extend({
 
   showLyrics: function () {
     if(this._mainView){
-      this.removeSubview(this.lyricsSelector, this._mainView);
+      this.removeSubview(this.containerSelector, this._mainView);
     }
     var lyricsView = new Savant.Views.ShowLyrics({ model: this.model });
-    this.addSubview(this.lyricsSelector, lyricsView);
+    this.addSubview(this.containerSelector, lyricsView);
     this._mainView = lyricsView;
   },
 
   editLyrics: function () {
     var editView = new Savant.Views.EditLyrics({ model: this.model });
-    this.removeSubview(this.lyricsSelector, this._mainView);
-    this.addSubview(this.lyricsSelector, editView);
+    this.removeSubview(this.containerSelector, this._mainView);
+    this.addSubview(this.containerSelector, editView);
     this._mainView = editView;
     this.listenToOnce(this._mainView, "cancelEdit submitEdit", this.showLyrics);
   }

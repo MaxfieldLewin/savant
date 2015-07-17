@@ -1,21 +1,21 @@
-<section class="song-header">
-  <section class="song-metadata">
-  </section>
-
-  <section class="song-byline">
-    <h1 class="song-show-title"><%= song.get("title") %></h1>
-    <a class="song-show-artist-hover" href="/#artists/<%= song.get('artist_id') %>"><h2 class="song-show-artist-name"><%= song.get('artist_name') %></h2><a>
-  </section>
-</section>
-
 <div class="song-body-container">
+  <section class="song-header">
+    <section class="song-metadata">
+    </section>
+
+    <section class="song-byline">
+      <h1 class="song-show-title"><%= song.get("title") %></h1>
+      <a class="song-show-artist-hover" href="/#artists/<%= song.get('artist_id') %>"><h2 class="song-show-artist-name"><%= song.get('artist_name') %></h2><a>
+    </section>
+  </section>
+
   <section class="song-social-buttons-container">
     <button class="edit-lyrics">Edit Lyrics</button>
   </section>
 
-  <section class="song-lyrics-container">
+  <section class="song-lyrics-and-details-container">
+  </section>
+
+  <section class="song-comments">
   </section>
 </div>
-
-<section class="song-comments">
-</section>

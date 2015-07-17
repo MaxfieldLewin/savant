@@ -297,6 +297,11 @@ body {
   border-left: 1px solid #333;
 }
 
+.lyrics-container {
+  display: block;
+  max-width: 50%;
+}
+
 .formatted-lyrics {
   color: #eee;
   font-family: 'Open Sans', sans-serif;
