@@ -81,11 +81,9 @@ body {
 
 .nav-layer-fixed {
   max-width: 1040px;
-  height: 29px;
+  height: 45px;
   margin: auto;
   border-right: 1px solid #555;
-  padding: 8px 5px;
-
 }
 
 .nav-tag-list {
@@ -114,6 +112,10 @@ body {
   left: 7px;
 }
 
+.nav-tag-list > li:first-of-type {
+  padding-left: 0px;
+}
+
 .nav-tag-list > li:last-of-type:after {
   content: "";
 }
@@ -126,6 +128,7 @@ body {
 .nav-group.right {
   display: block;
   float: right;
+  margin-right: 5px;
 }
 
 .nav-group {
@@ -135,8 +138,21 @@ body {
 }
 
 
-.nav-user-link {
+.nav-user-link, .nav-create-link {
+  font-family: 'Open Sans', sans-serif;
   display: inline-block;
+}
+
+.nav-user-link {
+  font-size: 13px;
+}
+
+
+.nav-user-link:first-of-type:after {
+  content: "•";
+  font-size: 10px;
+  color: #ccc;
+  position: relative;
 }
 
 .nav-user-link:hover {
@@ -283,7 +299,7 @@ body {
 
 .formatted-lyrics {
   color: #eee;
-  font-family: sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-size: 15px;
   line-size: 140%;
 }
