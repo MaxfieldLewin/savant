@@ -9,11 +9,11 @@ gem 'jquery-rails'
 gem 'backbone-on-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'bcrypt', '~> 3.1.7'
+gem 'faker'
 
 group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
-  gem 'faker'
   gem 'annotate'
   gem 'pry-rails'
   gem 'better_errors'
