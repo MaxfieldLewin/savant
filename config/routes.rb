@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :artists, except: [:new, :edit]
     resources :songs, except: [:new, :edit]
     resources :song_fragments, except: [:new, :edit]
+    resources :annotations, only: [:create, :update]
   end
 
 end

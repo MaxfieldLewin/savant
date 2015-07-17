@@ -8,6 +8,13 @@ class SongFragment < ActiveRecord::Base
     primary_key: :id,
     inverse_of: :song_fragments
 
+  has_one: :annotation,
+    class_name: "Annotation",
+    foreign_key: :song_fragment_id,
+    primary_key: :id,
+    inverse_of: :song_fragment,
+    dependent: :destroy
+
   def fragment_interval_available
     other_fragments = self.song.song_fragments.where.not(id: self.id)
 

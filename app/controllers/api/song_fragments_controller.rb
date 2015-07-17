@@ -11,9 +11,7 @@ class Api::SongFragmentsController < ApplicationController
   end
 
   def show
-  end
-
-  def index
+    @song_fragment = SongFragment.includes(:annotation).find(params[:id])
   end
 
   private
