@@ -1,10 +1,12 @@
 Savant.Views.ShowLyrics = Backbone.CompositeView.extend({
   template: JST['songs/showLyrics'],
+  tagName: "section class='group'",
   lyricsSelector: ".formatted-lyrics",
   detailsSelector: ".details-container",
+
   events: {
     "click a":"displayAnnotation"
-  }
+  },
 
   initialize: function () {
     this.listenTo(this.model, "sync change", this.render);
@@ -13,6 +15,7 @@ Savant.Views.ShowLyrics = Backbone.CompositeView.extend({
   render: function () {
     this.$el.html(this.template({ song: this.model }));
     this.installFragments();
+    this.installDescription();
     return this;
   },
 
@@ -35,6 +38,20 @@ Savant.Views.ShowLyrics = Backbone.CompositeView.extend({
     })
 
     $(".formatted-lyrics").html(workingLyrics);
+  },
+
+  installDescription: function () {
+    var descriptionView = new Savant.Views.ShowDescription({ model: this.model })
+    this.swapDetailsView(descriptionView);
+  },
+
+  swapDetailsView: function (view) {
+    if(this._detaislView){
+      this.removeSubview(this.detailsSelector, this._detailsView)
+    }
+
+    this.addSubview(this.detailsSelector, view);
+    this._detailView = view;
   }
 
 })

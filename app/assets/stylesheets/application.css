@@ -299,6 +299,7 @@ body {
 
 .lyrics-container {
   display: block;
+  float: left;
   max-width: 50%;
 }
 
@@ -316,4 +317,10 @@ body {
 .formatted-lyrics > a:hover {
   background-color: #ffff64;
   color: #000;
+}
+
+.details-container {
+  display: block;
+  float: right;
+  max-width: 50%;
 }

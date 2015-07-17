@@ -102,7 +102,16 @@ H to the izz-O, V to the izz-A
 What else can I say about dude? I gets bu-sy
 LYRICSTRING
 
+desc = <<-DESCSTRING
+“Izzo (H.O.V.A.)” was Hov’s very first top-10 single on the Billboard 100.
+
+The 1st verse deals with the rapper’s early career as a drug dealer, including his escape from conviction. The 2nd verse narrates his struggles with the exploitative recording industry, while in the last verse he reverts to his childhood growing up in the Marcy Houses housing projects
+
+The song’s lyrics “H to the izz-O, V to the izz-A” use the -izzle language code — invented by E-40 and popularized by Snoop Dogg — to spell out H.O.V.A. which refers to one of Jay-Z’s nicknames, “Hova”, which is play on God’s name (as in “Jehovah”, aka “Yahweh” aka “Hashem”)
+
+DESCSTRING
+
 jayz = Artist.create!(name: "Jay-Z")
-izzo = jayz.songs.create!(title: "Izzo", contents: contents)
+izzo = jayz.songs.create!(title: "Izzo", contents: contents, description: desc)
 izzo.song_fragments.create!(offset_start: 0, offset_end: 23)
 izzo.song_fragments.create!(offset_start: 26, offset_end: 46)
