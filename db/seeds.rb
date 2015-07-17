@@ -115,6 +115,7 @@ jayz = Artist.create!(name: "Jay-Z")
 izzo = jayz.songs.create!(title: "Izzo", contents: contents, description: desc)
 f1 = izzo.song_fragments.create!(offset_start: 0, offset_end: 23)
 f2 = izzo.song_fragments.create!(offset_start: 26, offset_end: 46)
+f3 = izzo.song_fragments.create!(offset_start: 150, offset_end: 170)
 
 
 anno_contents =<<-ANNOSTR
@@ -129,3 +130,5 @@ The drums may be an interpolation/replayed sample of the drums from “Xxplosive
 ANNOSTR
 
 f1.create_annotation!(contents: anno_contents)
+
+f2.create_annotation!(contents: "Cmon ladies and gents lets admire this man right here")

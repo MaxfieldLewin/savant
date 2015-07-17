@@ -322,6 +322,6 @@ body {
 
 .details-container {
   display: block;
-  float: right;
-  max-width: 50%;
+  float: left;
+  width: 50%;
 }

@@ -66,7 +66,11 @@ Savant.Views.ShowLyrics = Backbone.CompositeView.extend({
 
   maybeAnnotate: function (event) {
     if($(event.target)[0].className === "formatted-lyrics"){
-      console.log(window.getSelection())
+      var selection = window.getSelection();
+      console.log(selection);
+      var selected = window.getSelection().toString()
+      var lyrics = $(".formatted-lyrics").text();
+      //not sure how to handle repeated text 
     }
   },
 
