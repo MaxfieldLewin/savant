@@ -6,5 +6,5 @@ class Annotation < ActiveRecord::Base
     class_name: "SongFragment",
     foreign_key: :song_fragment_id,
     primary_key: :id,
-    inverse_of: :annotations
+    inverse_of: :annotation
 end

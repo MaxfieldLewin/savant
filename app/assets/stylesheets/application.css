@@ -16,7 +16,7 @@
 
 /* reset */
  html, body, section, article,
- h1, h2, p, strong, em, a, nav {
+ h1, h2, p, strong, em, a, nav, pre, div {
    margin: 0;
    border: 0;
    padding: 0;
@@ -295,6 +295,10 @@ body {
 
 .song-body-container {
   border-left: 1px solid #333;
+  color: #eee;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 15px;
+  line-size: 140%;
 }
 
 .lyrics-container {
@@ -304,10 +308,7 @@ body {
 }
 
 .formatted-lyrics {
-  color: #eee;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 15px;
-  line-size: 140%;
+
 }
 
 .formatted-lyrics > a {

@@ -113,5 +113,19 @@ DESCSTRING
 
 jayz = Artist.create!(name: "Jay-Z")
 izzo = jayz.songs.create!(title: "Izzo", contents: contents, description: desc)
-izzo.song_fragments.create!(offset_start: 0, offset_end: 23)
-izzo.song_fragments.create!(offset_start: 26, offset_end: 46)
+f1 = izzo.song_fragments.create!(offset_start: 0, offset_end: 23)
+f2 = izzo.song_fragments.create!(offset_start: 26, offset_end: 46)
+
+
+anno_contents =<<-ANNOSTR
+Hov talking about the sample:
+
+[M]y mom and pop had an extensive record collection. So Michael Jackson and Stevie Wonder, and all those sounds and souls — and Motown etc., etc. — filled the house. So I was very familiar with the song when Kanye bought me the sample. It was just such an interesting and fresh take on it that I immediately was drawn to it.
+The track helped establish the sped-up soul sample as a significant tool of production and Kanye himself said:
+
+Brought back the soul
+The drums may be an interpolation/replayed sample of the drums from “Xxplosive” by Dr. Dre, which Kanye has admitted to biting before.
+
+ANNOSTR
+
+f1.create_annotation!(contents: anno_contents)
