@@ -148,7 +148,7 @@ body {
 }
 
 
-.nav-user-link:first-of-type:after {
+#nav-signup:after {
   content: "•";
   font-size: 10px;
   color: #ccc;

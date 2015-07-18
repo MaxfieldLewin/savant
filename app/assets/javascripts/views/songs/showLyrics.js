@@ -7,21 +7,22 @@ Savant.Views.ShowLyrics = Backbone.CompositeView.extend({
   events: {
     "click a":"displayAnnotation",
     "clickAway":"displayDescription",
+    "cancelNewAnnotation":"displayDescription",
     "mouseup":"maybeAnnotate"
   },
 
-  initialize: function () {
+  initialize: function(){
     this.listenTo(this.model, "sync change", this.render);
   },
 
-  render: function () {
+  render: function(){
     this.$el.html(this.template({ song: this.model }));
     this.installFragments();
     this.displayDescription();
     return this;
   },
 
-  installFragments: function () {
+  installFragments: function(){
     var lyrics = $(".formatted-lyrics").text();
     var workingLyrics = lyrics.slice(0, lyrics.length);
     var workingOffset = 0;
@@ -42,39 +43,59 @@ Savant.Views.ShowLyrics = Backbone.CompositeView.extend({
 
   },
 
-  displayDescription: function () {
+  displayDescription: function(){
     var descriptionView = new Savant.Views.ShowDescription({ model: this.model });
     this.swapDetailsView(descriptionView);
   },
 
-  displayAnnotation: function (event) {
+  displayAnnotation: function(event){
     event.preventDefault();
     var fragmentId = $(event.currentTarget).attr("href").slice(16);
     //todo: find a better waty to do this (16 is len of '/#songFragments/')
-
     var fragment = this.model.songFragments().get(fragmentId);
     var lyricView = this;
     fragment.fetch({
-      success: function () {
+      success: function(){
         var annotationView = new Savant.Views.ShowAnnotation({ model: fragment.annotation() });
         lyricView.swapDetailsView(annotationView);
       }
     })
-
     //todo: loading display
   },
 
-  maybeAnnotate: function (event) {
+  displayNewAnnotation: function(fragment){
+    var newAnnotationView = new Savant.Views.NewAnnotation({ collection: this.model.songFragments(), fragment: fragment });
+    this.swapDetailsView(newAnnotationView);
+    this.listenToOnce(this.model.songFragments(), "add", this.render);
+  },
+
+  maybeAnnotate: function(event){
     if($(event.target)[0].className === "formatted-lyrics"){
       var selection = window.getSelection();
-      console.log(selection);
+      // console.log(selection);
       var selected = window.getSelection().toString()
       var lyrics = $(".formatted-lyrics").text();
-      //not sure how to handle repeated text 
+      var offsetStart = lyrics.indexOf(selected)
+      if( offsetStart !== lyrics.lastIndexOf(selected)) {
+        //handle the repetition case
+      }
+
+      var maybeFragment = new Savant.Models.SongFragment()
+      maybeFragment.save({
+        song_id: this.model.id,
+        offset_start: offsetStart,
+        offset_end: offsetStart + selected.length
+      },
+      {
+        success: function(){
+          this.displayNewAnnotation(maybeFragment);
+        }.bind(this),
+      });
+
     }
   },
 
-  swapDetailsView: function (view) {
+  swapDetailsView: function(view){
     if(this._detailsView){
       this.removeSubview(this.detailsSelector, this._detailsView);
       $(this.detailsSelector).empty();
