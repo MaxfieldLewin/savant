@@ -1,7 +1,15 @@
 class Api::SessionsController < ApplicationController
 
+  def show
+    if current_user
+      render 'api/users/show'
+    else
+      render json: {}
+    end
+  end
+
   def create
-    @user = User.find_by_credentials(params[:login_string], params[:password])
+    @user = User.find_by_credentials(params[:user][:login_string], params[:user][:password])
     if @user
       log_in!(@user)
       render 'api/users/show'
@@ -12,7 +20,7 @@ class Api::SessionsController < ApplicationController
 
   def destroy
     log_out!(current_user)
-    redirect_to root_url
+    render json: {}
   end
 
 end

@@ -8,7 +8,6 @@ Savant.Views.NewSong = Backbone.View.extend({
   initialize: function () {
     this.artists = new Savant.Collections.Artists();
     this.artists.fetch()
-    this.listenTo(this.collection, "sync", this.render);
     this.listenTo(this.artists, "sync", this.render);
   },
 
@@ -23,7 +22,6 @@ Savant.Views.NewSong = Backbone.View.extend({
 
     this.model.save(attrs, {
       success: function () {
-        this.collection.add(this.model);
         Savant.router.navigate("/#songs/" + this.model.id, {trigger: true})
       }.bind(this),
 

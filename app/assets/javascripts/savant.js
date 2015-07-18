@@ -4,8 +4,10 @@ window.Savant = {
   Views: {},
   Routers: {},
   initialize: function() {
-    var songs = new Savant.Collections.Songs();
-    Savant.router = new Savant.Routers.Router({ $rootEl: $("#content"), songs: songs })
+    this.currentUser = new Savant.Models.CurrentUser();
+    this.currentUser.fetch();
+
+    this.router = new Savant.Routers.Router({ $rootEl: $("#content") })
     Backbone.history.start();
   }
 };

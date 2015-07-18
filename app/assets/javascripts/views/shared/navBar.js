@@ -5,29 +5,32 @@ Savant.Views.NavBar = Backbone.View.extend({
 
   events: {
     "click #nav-signup":"signupModal",
-    "click #nav-signin":"signinModal"
+    "click #nav-signin":"signinModal",
+    "click #nav-signout":"signout"
   },
 
-  initialize: function (options) {
-    this.$pageRef = options.$pageRef;
-    this.listenTo(this.model, "sync", this.render);
+  initialize: function(options){
+    this.$pageRef = Backbone.$(document);
+    this.listenTo(Savant.currentUser, "signIn signOut", this.render);
     this.listenTo(Backbone.history, "route", this.toggleSmallTitle);
   },
 
-  render: function () {
-    this.$el.html(this.template({ user: this.model }));
+  render: function(){
+    this.$el.html(this.template({ user: Savant.currentUser }));
     return this;
   },
 
-  signupModal: function (event) {
-    var modal = this.$pageRef.find("#modal-container")
-    modal.find(".modal-form").html(this.signupForm({ user: this.model }));
-    modal.addClass("is-open");
-    this.$pageRef.find(".modal-screen").one("click", this.cancelModal.bind(this));
-    this.$pageRef.find(".modal-signup").one("submit", this.submitSignup.bind(this));
+  signupModal: function(){
+    if (Savant.router.requireSignedOut()) {
+      var modal = this.$pageRef.find("#modal-container")
+      modal.find(".modal-form").html(this.signupForm({ user: this.model }));
+      modal.addClass("is-open");
+      this.$pageRef.find(".modal-screen").one("click", this.cancelModal.bind(this));
+      this.$pageRef.find(".modal-signup").one("submit", this.submitSignup.bind(this));
+    }
   },
 
-  signinModal: function (event) {
+  signinModal: function(callback ){
     var modal = this.$pageRef.find("#modal-container")
     modal.find(".modal-form").html(this.signinForm({ user: this.model }));
     modal.addClass("is-open");
@@ -35,25 +38,29 @@ Savant.Views.NavBar = Backbone.View.extend({
     this.$pageRef.find(".modal-signin").one("submit", this.submitSignin.bind(this));
   },
 
-  cancelModal: function () {
+  cancelModal: function(){
     var modal = this.$pageRef.find("#modal-container")
     modal.find(".modal-form").empty();
     modal.removeClass("is-open");
   },
 
-  submitSignup: function (event) {
+  submitSignup: function(event){
     event.preventDefault();
     var attrs = $(event.target).serializeJSON();
+
     this.model.save(attrs["user"], {
-      success: function () {
-        Savant.router.logIn(this.model);
+      success: function(){
         this.cancelModal();
         this.render();
+        Savant.currentUser.signIn({
+          login_string: attrs["user"].username,
+          password: attrs["user"].password
+        });
       }.bind(this),
 
-      error: function (model, response) {
+      error: function(model, response){
         this.$pageRef.find(".modal-signup > .errors").empty();
-        response.responseJSON.forEach(function(error){
+        response.responseJSON.forEach( function(error){
           this.$pageRef.find(".modal-signup > .errors").append(error + "<br>");
         }.bind(this));
         this.$pageRef.find("#username").val(model.get("username"));
@@ -63,35 +70,35 @@ Savant.Views.NavBar = Backbone.View.extend({
     });
   },
 
-  submitSignin: function (event) {
+  submitSignin: function(event){
     event.preventDefault();
     var credentials = $(event.target).serializeJSON();
-    this.model.set("login_string", credentials["login_string"])
-    var loginReq = jQuery.ajax({
-      type: "POST",
-      url: "/session",
-      data: credentials,
-      dataType: "JSON",
+    Savant.currentUser.signIn({
+      login_string: credentials["user"].login_string,
+      password: credentials["user"].password,
 
-      success: function (data) {
-        this.model.set(data);
-        Savant.router.logIn(this.model);
+      success: function(){
         this.cancelModal();
-        this.render();
       }.bind(this),
 
       error: function (response) {
         this.$pageRef.find(".modal-signin > .errors").empty();
-        response.responseText.forEach(function(error){
+        response.responseText.forEach( function(error){
           this.$pageRef.find(".modal-signin > .errors").append(error + "<br>");
         }.bind(this));
-        this.$pageRef.find("#loginString").val(model.get("login_string"));
+        this.$pageRef.find("#loginString").val(credentials["user"].login_string);
         this.$pageRef.find(".modal-signin").one("submit", this.submitSignup.bind(this));
       }.bind(this)
     })
   },
 
-  toggleSmallTitle: function (router, route) {
+  signout: function(event){
+    event.preventDefault();
+    Savant.currentUser.signOut();
+  },
+
+
+  toggleSmallTitle: function(router, route){
     if (route === "splashPage"){
       $(".small-title").removeClass("visible");
     } else {
