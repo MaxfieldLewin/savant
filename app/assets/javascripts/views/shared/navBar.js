@@ -73,9 +73,10 @@ Savant.Views.NavBar = Backbone.View.extend({
   submitSignin: function(event){
     event.preventDefault();
     var credentials = $(event.target).serializeJSON();
+    console.log(credentials);
     Savant.currentUser.signIn({
-      login_string: credentials["user"].login_string,
-      password: credentials["user"].password,
+      login_string: credentials["login_string"],
+      password: credentials["password"],
 
       success: function(){
         this.cancelModal();

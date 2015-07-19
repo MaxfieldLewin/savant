@@ -1,7 +1,7 @@
 json.extract! artist, :id, :name
 
 if details
-  json.extract! artist, :description, :image_id
+  json.extract! artist, :description, :image_file_name
 end
 
 if songs

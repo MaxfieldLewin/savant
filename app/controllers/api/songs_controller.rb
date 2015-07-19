@@ -38,6 +38,6 @@ class Api::SongsController < ApplicationController
 
   private
     def song_params
-      params.require(:song).permit(:title, :description, :contents, :image_id)
+      params.require(:song).permit(:title, :description, :contents)
     end
 end

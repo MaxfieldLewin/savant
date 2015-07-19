@@ -12,6 +12,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'faker'
 gem 'figaro'
 gem 'omniauth-twitter'
+gem 'paperclip'
+gem 'aws-sdk', '~> 1.6'
 
 group :development, :test do
   gem 'rspec-rails'

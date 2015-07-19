@@ -1,6 +1,6 @@
 ## MVP Features
 - [ ] Commentable
-- [ ] Oauth
+- [x] Oauth
 - [ ] Image uploads
 - [ ] Splash page design
 - [ ] Artist show page
@@ -8,6 +8,7 @@
 - [ ] Top-level Search
 
 ## Known bugs
+- [ ] Need to auto-wrap long-lines on lyrics save
 - [ ] Resolving annotation anchoring for repeated lyrics
 - [ ] Re-anchoring annotations when song lyrics are updated
 - [ ] Flicker on annotation view clickaway to other annotation
