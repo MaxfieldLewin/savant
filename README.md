@@ -10,7 +10,7 @@ Savant is a Genius clone built on Rails and Backbone. Users can:
 - [X] Create accounts
 - [X] Create sessions (log in)
 - [X] Add artists & texts (song lyrics, news articles, poems, any item of public record)
-- [ ] Annotate texts line-by-line
+- [X] Annotate texts line-by-line
 - [ ] Comment on texts, annotations, and artists
 - [ ] View texts with their annotations and comments as a cohesive, single-page experience
 - [ ] Tag songs and artists

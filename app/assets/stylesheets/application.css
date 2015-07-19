@@ -248,7 +248,6 @@ body {
 }
 
 .input-group > div {
-  width: 100%;
   display: block;
   float: left;
   margin: 20px;
@@ -261,6 +260,24 @@ body {
 
 .song-form-byline {
   width: 300px;
+}
+
+#new-song-artist-search .tt-menu {
+  width: 300px;
+  color: #ede8e9;
+  background-color: #141414;
+  font-size: 14px;
+  font-family: 'Open Sans', sans-serif;
+  border: 1px solid #3a3a3a;
+  margin-left: 8px;
+}
+
+#new-song-artist-search .tt-suggestion:nth-child(2n + 0) {
+  background-color: #212121;
+}
+
+#new-song-artist-search .tt-highlight {
+  color: #ffff64;
 }
 
 .song-form-byline, .lyrics-textarea {

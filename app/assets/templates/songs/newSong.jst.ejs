@@ -5,13 +5,9 @@
     <div>
       <label for="artist">Artist:</label>
       <br>
-      <select id="artist" class="song-form-byline" name="song[artist_id]">
-        <% artists.forEach( function(artist) {  %>
-          <option value="<%= artist.id %>" <%= artist.id == song.get('artist_id') ? "selected" : ""  %> >
-            <%= artist.get("name") %>
-          </option>
-        <% }) %>
-      </select>
+      <div id="new-song-artist-search">
+        <input id="artist" type="text"  class="song-form-byline typeahead" name="song[artist_name]" placeholder="Lil B">
+      </div>
     </div>
 
     <div>
@@ -26,7 +22,7 @@
     <br>
     <textarea class="lyrics-textarea" id="contents" name="song[contents]"><%= song.get('contents') %></textarea>
   </div>
-  
+
   <div class="errors"></div>
   <button class="form-button">Submit</button>
 

@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.serializejson
+//= require typeahead.jquery
 //= require underscore
 //= require backbone
 //= require savant
