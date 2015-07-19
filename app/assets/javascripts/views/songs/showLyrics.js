@@ -44,7 +44,7 @@ Savant.Views.ShowLyrics = Backbone.CompositeView.extend({
   },
 
   displayDescription: function(){
-    var descriptionView = new Savant.Views.ShowDescription({ model: this.model });
+    var descriptionView = new Savant.Views.ShowSongDescription({ model: this.model });
     this.swapDetailsView(descriptionView);
   },
 

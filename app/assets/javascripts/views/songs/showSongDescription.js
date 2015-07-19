@@ -1,5 +1,5 @@
-Savant.Views.ShowDescription = Backbone.CompositeView.extend({
-  template: JST['songs/showDetails'],
+Savant.Views.ShowSongDescription = Backbone.CompositeView.extend({
+  template: JST['shared/showDetails'],
   tagName: "section class='lyrics-details description'",
 
   render: function () {
