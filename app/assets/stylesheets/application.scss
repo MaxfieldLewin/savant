@@ -193,7 +193,6 @@ body {
 
 /* Splash Page */
 
-
 .splash-song{
   display: block;
   width: 336px;
@@ -205,21 +204,45 @@ body {
 .splash-song:first-child {
   width: 682px;
 }
-/*
-.splash-song:nth-child(12n + 2), .splash-song:nth-child(12n + 3) {
-  float: right;
-}*/
+
+.splash-song-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
 
 .splash-song-image {
   width: 100%;
   height: auto;
 }
 
+.splash-song-image-overlay::before {
+  content: "";
+  position: absolute;
+  display: block;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0.4;
+  background: url(asset-path("tooth_bg.png"));
+}
+
 .splash-song-byline {
   position: absolute;
+  display: block;
   left: 12px;
   bottom: 12px;
   right: 12px;
+  color: #fff;
+  font-size: 30px;
+  font-weight: bold;
+  font-family: "Abel", sans-serif;
+}
+
+.splash-song-artist {
+  font-size: 24px;
+  font-weight: normal;
 }
 
 /* modals */
