@@ -5,7 +5,7 @@ class Api::UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      log_in!(@user)
+      sign_in!(@user)
       @user.login_status = true
       render :show
     else

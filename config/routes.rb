@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
 
-  root to: "static_pages#root"
-
-
   namespace :api, defaults: {format: :json} do
     resource :session, only: [:show, :create, :destroy]
     resources :users, except: [:new, :edit]
@@ -11,5 +8,9 @@ Rails.application.routes.draw do
     resources :song_fragments, except: [:new, :edit]
     resources :annotations, only: [:create, :update]
   end
+
+  get "auth/:provider/callback", to: "api/sessions#omniauth"
+  
+  root to: "static_pages#root"
 
 end

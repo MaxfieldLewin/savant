@@ -11,7 +11,7 @@ class Api::SessionsController < ApplicationController
   def create
     @user = User.find_by_credentials(params[:user][:login_string], params[:user][:password])
     if @user
-      log_in!(@user)
+      sign_in!(@user)
       render 'api/users/show'
     else
       render json: @user.errors.full_messages, status: 401
@@ -19,8 +19,19 @@ class Api::SessionsController < ApplicationController
   end
 
   def destroy
-    log_out!(current_user)
+    sign_out!(current_user)
     render json: {}
   end
 
+  def omniauth
+    user = User.find_or_create_by_auth_hash(auth_hash)
+    sign_in!(user)
+    redirect_to root_url
+  end
+
+  protected
+    def auth_hash
+      request.env['omniauth.auth']
+    end
+    
 end
