@@ -1,4 +1,6 @@
 class Annotation < ActiveRecord::Base
+  includes Image
+
   validates :contents, :song_fragment_id, presence: true;
   validates :song_fragment_id, uniqueness: true
 

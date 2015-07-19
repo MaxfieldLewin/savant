@@ -11,7 +11,7 @@ class Api::AnnotationsController < ApplicationController
 
   private
     def annotation_params
-      params.require(:annotation).permit(:song_fragment_id, :contents)
+      params.require(:annotation).permit(:song_fragment_id, :contents, :image)
     end
 
 end

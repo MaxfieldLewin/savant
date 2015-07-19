@@ -1,4 +1,6 @@
 class Song < ActiveRecord::Base
+  includes Image
+  
   validates :title, :artist_id, :contents, presence: true
   validates :title, uniqueness: {scope: :artist_id}
 
