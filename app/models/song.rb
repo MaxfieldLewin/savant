@@ -1,5 +1,6 @@
 class Song < ActiveRecord::Base
-  includes Image
+  has_attached_file :image, default_url: "missing.jpg"
+  validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
   
   validates :title, :artist_id, :contents, presence: true
   validates :title, uniqueness: {scope: :artist_id}

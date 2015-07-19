@@ -1,10 +1,11 @@
 <h1 class="title big-title"> SAVANT </h1>
 <h2 class="small-slogan"> Annotate all the things. </h2>
 
-<ul>
+<ul class="splash-songs-list group">
   <% songs.forEach(function (song) { %>
     <li class="splash-song">
-      <a href="#songs/<%= song.id %>">"<%= song.get("title") %>" by <%= song.get("artist_name") %></a>
+      <img class="splash-song-image savant-image" src="<%= song.get('image_url')%>">
+      <a class="splash-song-byline" href="#songs/<%= song.id %>">"<%= song.get("title") %>" by <%= song.get("artist_name") %></a>
     </li>
   <% }) %>
 </ul>

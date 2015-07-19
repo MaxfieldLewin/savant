@@ -163,7 +163,7 @@ body {
 #content {
   display: block;
   margin: auto;
-  max-width: 1040px;
+  max-width: 1038px;
 }
 
 .title {
@@ -189,6 +189,37 @@ body {
   display: inline-block;
   font-size: 20px;
   text-shadow: -2px 1px #ffff64;
+}
+
+/* Splash Page */
+
+
+.splash-song{
+  display: block;
+  width: 336px;
+  float: left;
+  position: relative;
+  margin: 0px 0px 6px 10px;
+}
+
+.splash-song:first-child {
+  width: 682px;
+}
+/*
+.splash-song:nth-child(12n + 2), .splash-song:nth-child(12n + 3) {
+  float: right;
+}*/
+
+.splash-song-image {
+  width: 100%;
+  height: auto;
+}
+
+.splash-song-byline {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  right: 12px;
 }
 
 /* modals */

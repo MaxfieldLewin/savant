@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
-  includes Image
+  has_attached_file :image, default_url: "missing.jpg"
+  validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
   validates :email, :username, uniqueness: true, presence: true
   validates :password, length: {minimum: 6, allow_nil: true}

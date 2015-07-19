@@ -31,8 +31,8 @@ class Api::SongsController < ApplicationController
   end
 
   def index
-    @songs = Song.includes(:artist).all
-    # @songs = Song.includes(:artist).all.shuffle.take(10);
+    # @songs = Song.includes(:artist).all
+    @songs = Song.includes(:artist).all.shuffle.take(9);
     # @songs = Song.includes(:artist).find_by_sql("SELECT * FROM songs ORDER BY RANDOM() LIMIT 10")
   end
 
