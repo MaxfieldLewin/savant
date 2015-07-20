@@ -13,7 +13,7 @@
     <div>
       <label for="title">Title:</label>
       <br>
-      <input id="title" type="text" class="song-form-byline" name="song[title]" value="<%= song.get('title') %>" placeholder="Title">
+      <input id="title" type="text" class="song-form-byline" name="song[title]" value="<%= song.escape('title') %>" placeholder="Title">
     </div>
   </div>
 
@@ -23,7 +23,7 @@
   <div class="input-textarea-container">
     <label for="contents">Lyrics/Contents</label>
     <br>
-    <textarea class="lyrics-textarea" id="contents" name="song[contents]"><%= song.get('contents') %></textarea>
+    <textarea class="lyrics-textarea" id="contents" name="song[contents]"><%= song.escape('contents') %></textarea>
   </div>
 
   <div class="errors"></div>

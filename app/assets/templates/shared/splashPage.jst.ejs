@@ -9,9 +9,9 @@
     <li class="splash-song">
       <a class="splash-song-link" href="#songs/<%= song.id %>">
         <div class="splash-song-image-overlay">
-          <img class="splash-song-image savant-image" src="<%= song.get('image_url')%>">
+          <img class="splash-song-image savant-image" src="<%= song.escape('image_url')%>">
         </div>
-        <div class="splash-song-byline"><%= song.get("title") %><br><span class="splash-song-artist"><%= song.get("artist_name") %></span></div>
+        <div class="splash-song-byline"><%= song.escape("title") %><br><span class="splash-song-artist"><%= song.escape("artist_name") %></span></div>
       </a>
     </li>
   <% }) %>

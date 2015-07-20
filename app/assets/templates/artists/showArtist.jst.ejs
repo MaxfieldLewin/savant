@@ -1,18 +1,18 @@
 <section class="artist-header">
   <section class="artist-byline">
-    <h1 class="artist-show-name"><%= artist.get('name') %></h1>
+    <h1 class="artist-show-name"><%= artist.escape('name') %></h1>
     <% if (artist.get('verified_user_id')) { %>
-      <a class="artist-show-verified" href="/#users/<%= artist.get('verified_user_id') %>">See <%= artist.get('name') %>'s verified account'<a>
+      <a class="artist-show-verified" href="/#users/<%= artist.escape('verified_user_id') %>">See <%= artist.escape('name') %>'s verified account'<a>
     <% } %>
   </section>
 </section>
 
 <div class="artist-body-container group">
   <section class="artist-songs-container">
-    <h2>Songs by <%= artist.get('name') %></h2>
+    <h2>Songs by <%= artist.escape('name') %></h2>
     <ul class="artist-songs-list">
       <% songs.forEach( function(song){ %>
-        <li class="artist-song-list-item"><a href="/#songs/<%= song.id %>"> <%= song.get("title") %></a></li>
+        <li class="artist-song-list-item"><a href="/#songs/<%= song.id %>"> <%= song.escape("title") %></a></li>
       <% }) %>
     </ul>
   </section>

@@ -5,10 +5,10 @@
 
   <form  action="#" method="post">
     <label for="username">Username</label>
-    <input id="username" type="text" name="user[username]" value="<%= user.get('username') %>">
+    <input id="username" type="text" name="user[username]" value="<%= user.escape('username') %>">
 
     <label for="email">Email</label>
-    <input id="email" type="text" name="user[email]" value="<%= user.get('email') %>">
+    <input id="email" type="text" name="user[email]" value="<%= user.escape('email') %>">
 
     <label for="password">Password</label>
     <input id="password" type="password" name="user[password]">

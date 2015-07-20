@@ -5,7 +5,7 @@
 
   <form  action="#" method="post">
     <label for="loginString">Username or Email</label>
-    <input id="loginString" type="text" name="login_string" value="<%= user.get('login_string') %>">
+    <input id="loginString" type="text" name="login_string" value="<%= user.escape('login_string') %>">
 
     <label for="password">Password</label>
     <input id="password" type="password" name="password">

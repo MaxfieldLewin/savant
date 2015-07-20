@@ -1,7 +1,7 @@
 Savant.Views.ShowAnnotation = Backbone.CompositeView.extend({
   template: JST['shared/showDetails'],
   tagName: "section class='lyrics-details annotation'",
-  commentsSelector: ".annotation-comments-container",
+  commentsSelector: ".details-comments-container",
 
   render: function () {
     this.$el.html(this.template({ title: "Savant Annotation", details: this.model.get("contents") }));

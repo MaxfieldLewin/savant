@@ -1,7 +1,7 @@
 Savant.Views.ShowArtist = Backbone.CompositeView.extend({
   template: JST['artists/showArtist'],
   detailsSelector: ".artist-details-container",
-  commentsSelector: ".artist-comments-container",
+  commentsSelector: ".details-comments-container",
 
   initialize: function(){
     this.listenTo(this.model, "sync", this.render);
