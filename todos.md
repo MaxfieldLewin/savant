@@ -1,6 +1,7 @@
 ## MVP Features
 - [ ] Commentable
 - [ ] Set up auth gating on C/U/D actions (front and backend)
+- [ ] Style signup/in modals
 - [x] Oauth
 - [X] Image uploads
 - [X] Splash page design
