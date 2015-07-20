@@ -7,14 +7,14 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 Faker::Config.locale = 'en-US'
 
-User.create!(username: "max", email: "max@max.max", password: "maxmax")
+max = User.create!(username: "max", email: "max@max.max", password: "maxmax")
 
 artists = ["Lil B", "MF DOOM", "Gucci Mane", "William Shakespeare", "William Shattner", "Will Smith", "Will.I.Am"]
 
 
 artists.each do |artist|
   artist_model = Artist.create!(name: artist)
-  10.times do
+  5.times do
 
     case (1..3).to_a.sample
     when 1
@@ -25,7 +25,7 @@ artists.each do |artist|
       title = "So #{Faker::Hacker.adjective.capitalize} they call me #{Faker::App.name}"
     end
 
-    contents = Faker::Lorem.paragraph;
+    contents = Faker::Lorem.paragraphs(4);
 
     artist_model.songs.create(title: title, contents: contents)
   end
@@ -115,8 +115,6 @@ jayz = Artist.create!(name: "Jay-Z")
 izzo = jayz.songs.create!(title: "Izzo", contents: contents, description: desc)
 f1 = izzo.song_fragments.create!(offset_start: 0, offset_end: 23)
 f2 = izzo.song_fragments.create!(offset_start: 26, offset_end: 46)
-f3 = izzo.song_fragments.create!(offset_start: 150, offset_end: 170)
-
 
 anno_contents =<<-ANNOSTR
 Hov talking about the sample:
@@ -129,6 +127,11 @@ The drums may be an interpolation/replayed sample of the drums from “Xxplosive
 
 ANNOSTR
 
-f1.create_annotation!(contents: anno_contents)
+a1 = f1.create_annotation!(contents: anno_contents)
 
 f2.create_annotation!(contents: "Cmon ladies and gents lets admire this man right here")
+
+
+izzo.comments.create!(user_id: max.id, contents: "The first time I heard this beat my life changed")
+
+a1.comments.create!(user_id: max.id, contents: "Trueeeeeeeee")

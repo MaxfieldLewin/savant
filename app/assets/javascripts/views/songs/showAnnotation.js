@@ -18,7 +18,7 @@ Savant.Views.ShowAnnotation = Backbone.CompositeView.extend({
 
   showComments: function(){
     var commentableInfo = {
-      commentableType: "annotation",
+      commentableType: "Annotation",
       commentableId: this.model.id
     };
 

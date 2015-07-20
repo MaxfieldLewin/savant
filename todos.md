@@ -7,7 +7,6 @@
 
 ## Known bugs/incomplete features
 - [ ] Resolving annotation anchoring for repeated lyrics
-- [ ] Need to auto-wrap long-lines on lyrics save
 - [ ] Set up auth gating on C/U/D actions (front and backend)
 - [ ] Style signup/in modals
 - [ ] Need to trim new song-fragments on word start/end

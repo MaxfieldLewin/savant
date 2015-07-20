@@ -17,7 +17,7 @@ Savant.Views.ShowArtist = Backbone.CompositeView.extend({
 
   showComments: function(){
     var commentableInfo = {
-      commentableType: "artist",
+      commentableType: "Artist",
       commentableId: this.model.id
     };
 
