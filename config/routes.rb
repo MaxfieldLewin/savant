@@ -7,10 +7,11 @@ Rails.application.routes.draw do
     resources :songs, except: [:new, :edit]
     resources :song_fragments, except: [:new, :edit]
     resources :annotations, only: [:create, :update]
+    resources :comments, except: [:new, :edit]
   end
 
   get "auth/:provider/callback", to: "api/sessions#omniauth"
-  
+
   root to: "static_pages#root"
 
 end

@@ -1,9 +1,10 @@
 ## MVP Features
 - [ ] Commentable
+- [ ] Set up auth gating on C/U/D actions (front and backend)
 - [x] Oauth
-- [ ] Image uploads
+- [X] Image uploads
 - [X] Splash page design
-- [ ] New Song optional details
+- [eh] New Song optional details
 - [ ] Artist show page w/ inline edit
 - [ ] Taggable
 - [ ] Top-level Search
