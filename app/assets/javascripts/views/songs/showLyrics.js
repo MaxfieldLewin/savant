@@ -72,19 +72,52 @@ Savant.Views.ShowLyrics = Backbone.CompositeView.extend({
   maybeAnnotate: function(event){
     if($(event.target)[0].className === "formatted-lyrics"){
       var selection = window.getSelection();
-      // console.log(selection);
-      var selected = window.getSelection().toString()
-      var lyrics = $(".formatted-lyrics").text();
-      var offsetStart = lyrics.indexOf(selected)
+      var selected = window.getSelection().toString();
+      var lyricsDomCopy = $(".formatted-lyrics")
+      var lyrics = lyricsDomCopy.text();
+      var offsetStart = lyrics.indexOf(selected);
+
+      //this conditional is trying to handle cases of repeated lyrics
       if( offsetStart !== lyrics.lastIndexOf(selected)) {
-        //handle the repetition case
+        if(selection.anchorOffset < selection.focusOffset){
+          var selectionNodeOffset = selection.anchorOffset;
+        } else {
+          var selectionNodeOffset = selection.focusOffset;
+        }
+        var selectionNode = selection.anchorNode;
+        var nodeText = selectionNode.textContent;
+
+        var matchStr = "";
+        for(var i = 0; i < nodeText.length; i++){
+          matchStr += "Q";
+        }
+
+        var matchStrNode = document.createTextNode(matchStr);
+        selectionNode.parentNode.insertBefore(matchStrNode, selectionNode);
+        selectionNode.parentNode.removeChild(selectionNode);
+
+        var modifiedLyrics = $(".formatted-lyrics").text();
+        var trueOffset = modifiedLyrics.indexOf(matchStr) + selectionNodeOffset;
+
+        var replacementNode = document.createTextNode(nodeText);
+        matchStrNode.parentNode.insertBefore(replacementNode, matchStrNode);
+        matchStrNode.parentNode.removeChild(matchStrNode);
+
+        var replacementSelectRange = new Range();
+        replacementSelectRange.setStart(replacementNode, selectionNodeOffset);
+        replacementSelectRange.setEnd(replacementNode, selectionNodeOffset + selected.length);
+        selection.removeAllRanges();
+        selection.addRange(replacementSelectRange);
+
+      } else {
+        var trueOffset = offsetStart;
       }
 
       var maybeFragment = new Savant.Models.SongFragment()
       maybeFragment.save({
         song_id: this.model.id,
-        offset_start: offsetStart,
-        offset_end: offsetStart + selected.length
+        offset_start: trueOffset,
+        offset_end: trueOffset + selected.length
       },
       {
         success: function(){

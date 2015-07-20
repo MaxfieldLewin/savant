@@ -1,6 +1,7 @@
 ## MVP Features
 - [ ] Artist show page w/ inline edit
 - [ ] Top-level Search
+- [ ] Gues login
 
 ## Known bugs/incomplete features
 - [ ] Resolving annotation anchoring for repeated lyrics
@@ -8,6 +9,7 @@
 - [ ] Need to trim new song-fragments on word start/end
 - [ ] Re-anchoring annotations when song lyrics are updated
 - [ ] Flicker on annotation view clickaway to other annotation
+- [ ] Make splash page images more rectangular
 
 ## Stretch Goals
 - [ ] Taggable
