@@ -52,23 +52,45 @@ Savant.Views.NewSong = Backbone.View.extend({
     };
   },
 
-  submitSong: function (event) {
+  submitSong: function(event){
     event.preventDefault();
-    var attrs = $(event.currentTarget).serializeJSON();
+    // var attrs = $(event.currentTarget).serializeJSON();
+    //
+    // this.model.save(attrs, {
+    //   success: function () {
+    //     Savant.router.navigate("/#songs/" + this.model.id, {trigger: true})
+    //   }.bind(this),
+    //
+      // error: function (model, response) {
+      //   $(".errors").empty()
+      //   response.responseJSON.forEach(function(error){
+      //     $(".errors").append(error + "<br>");
+      //   }.bind(this))
+      // }.bind(this)
+    //
+    // })
+    var title = this.$("#title").val();
+    var artist = this.$("#artist").val();
+    var contents = this.$("#contents").val();
+    var file = this.$("#song-image")[0].files[0];
 
-    this.model.save(attrs, {
-      success: function () {
-        Savant.router.navigate("/#songs/" + this.model.id, {trigger: true})
+    var formData = new FormData();
+    formData.append("song[title]", title);
+    formData.append("song[artist_name]", artist);
+    formData.append("song[contents]", contents);
+    formData.append("song[image]", file);
+
+    this.model.saveFormData( formData, {
+      success: function(){
+       Savant.router.navigate("/#songs/" + this.model.id, {trigger: true})
       }.bind(this),
 
-      error: function (model, response) {
-        $(".errors").empty()
-        response.responseJSON.forEach(function(error){
-          $(".errors").append(error + "<br>");
-        }.bind(this))
-      }.bind(this)
-
+       error: function (model, response) {
+         $(".errors").empty()
+         response.responseJSON.forEach(function(error){
+           $(".errors").append(error + "<br>");
+         }.bind(this))
+       }.bind(this)
     })
-
   }
 })
