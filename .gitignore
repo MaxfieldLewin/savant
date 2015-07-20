@@ -35,3 +35,6 @@ bower.json
 
 # Ignore application configuration
 /config/application.yml
+
+#Go away finder
+.DS_Store

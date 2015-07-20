@@ -2,7 +2,7 @@
 - [ ] Commentable
 - [x] Oauth
 - [ ] Image uploads
-- [ ] Splash page design
+- [X] Splash page design
 - [ ] New Song optional details
 - [ ] Artist show page w/ inline edit
 - [ ] Taggable

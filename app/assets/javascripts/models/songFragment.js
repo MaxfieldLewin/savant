@@ -9,6 +9,11 @@ Savant.Models.SongFragment = Backbone.Model.extend({
     return this._annotation;
   },
 
+  toJSON: function(){
+    var json = {song_fragment: _.clone(this.attributes)};
+    return json;
+  },
+
   parse: function (response) {
     if (response.annotation) {
       this.annotation().set(response.annotation, {parse: true});

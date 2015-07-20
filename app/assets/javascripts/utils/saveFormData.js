@@ -1,4 +1,4 @@
-Backbone.Model.saveFormData = function(formData, options){
+Backbone.Model.prototype.saveFormData = function(formData, options){
   var method = this.isNew() ? "POST" : "PUT";
   var model = this;
 
