@@ -1,16 +1,19 @@
 <div class="modal-signin">
-  <h1>Sign In to Savant</h1>
+  <h1>Sign In</h1>
 
-  <a class="oauth-link oauth-twitter" href="/auth/twitter">Sign in with Twitter</a><br>
+  <div class="modal-form-group">
 
-  <form  action="#" method="post">
-    <label for="loginString">Username or Email</label>
-    <input id="loginString" type="text" name="login_string" value="<%= user.escape('login_string') %>">
+    <a class="oauth-link oauth-twitter" href="/auth/twitter">Sign in with Twitter</a><br>
 
-    <label for="password">Password</label>
-    <input id="password" type="password" name="password">
+    <form  action="#" method="post">
+      <label for="loginString">Username or Email</label>
+      <input id="loginString" type="text" name="login_string" value="<%= user.escape('login_string') %>">
 
-    <button>Submit</button>
-  </form>
-  <div class="errors"></div>
+      <label for="password">Password</label>
+      <input id="password" type="password" name="password">
+
+      <button>Submit</button>
+    </form>
+    <div class="errors"></div>
+  </div>
 </div>

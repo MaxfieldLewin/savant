@@ -1,8 +1,5 @@
 ## MVP Features
-- [ ] Commentable
-
 - [ ] Artist show page w/ inline edit
-
 - [ ] Top-level Search
 
 ## Known bugs/incomplete features

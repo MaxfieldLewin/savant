@@ -1,19 +1,22 @@
 <div class="modal-signup">
-  <h1>Sign Up for Savant</h1>
+  <h1>SIGN UP</h1>
+  <h2>and be a savant</h2>
 
-  <a class="oauth-link oauth-twitter" href="/auth/twitter">Sign in with Twitter</a><br>
+  <a class="oauth-link oauth-twitter" href="/auth/twitter">Sign up with Twitter</a><br>
+  <div class="modal-form-group">
 
-  <form  action="#" method="post">
-    <label for="username">Username</label>
-    <input id="username" type="text" name="user[username]" value="<%= user.escape('username') %>">
+    <form  action="#" method="post">
+      <label for="username">Username</label>
+      <input id="username" type="text" name="user[username]" value="<%= user.escape('username') %>">
 
-    <label for="email">Email</label>
-    <input id="email" type="text" name="user[email]" value="<%= user.escape('email') %>">
+      <label for="email">Email</label>
+      <input id="email" type="text" name="user[email]" value="<%= user.escape('email') %>">
 
-    <label for="password">Password</label>
-    <input id="password" type="password" name="user[password]">
+      <label for="password">Password</label>
+      <input id="password" type="password" name="user[password]">
 
-    <button>Submit</button>
-  </form>
-  <div class="errors"></div>
+      <button>Submit</button>
+    </form>
+    <div class="errors"></div>
+  </div>
 </div>
