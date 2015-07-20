@@ -5,10 +5,12 @@ Savant.Views.ShowSong = Backbone.CompositeView.extend({
   },
 
   containerSelector: ".song-lyrics-and-details-container",
+  commentsSelector: ".song-comments-container",
 
   render: function () {
     this.$el.html(this.template({ song: this.model }));
     this.showLyrics();
+    this.showComments();
     return this;
   },
 
@@ -27,6 +29,16 @@ Savant.Views.ShowSong = Backbone.CompositeView.extend({
     this.addSubview(this.containerSelector, editView);
     this._mainView = editView;
     this.listenToOnce(this._mainView, "cancelEdit submitEdit", this.showLyrics);
+  },
+
+  showComments: function(){
+    var commentableInfo = {
+      commentableType: "song",
+      commentableId: this.model.id
+    };
+
+    var commentsView = new Savant.Views.showComments({ collection: this.model.comments(), commentableInfo: commentableInfo});
+    this.addSubview(this.commentsSelector, commentsView);
   }
 
 })

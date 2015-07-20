@@ -1,6 +1,7 @@
 Savant.Views.ShowArtist = Backbone.CompositeView.extend({
   template: JST['artists/showArtist'],
   detailsSelector: ".artist-details-container",
+  commentsSelector: ".artist-comments-container",
 
   initialize: function(){
     this.listenTo(this.model, "sync", this.render);
@@ -10,6 +11,17 @@ Savant.Views.ShowArtist = Backbone.CompositeView.extend({
     this.$el.html(this.template({ artist: this.model, songs: this.model.songs() }));
     var descriptionView = new Savant.Views.ShowArtistDescription({ model: this.model })
     this.addSubview(this.detailsSelector, descriptionView)
+    this.showComments();
     return this;
+  },
+
+  showComments: function(){
+    var commentableInfo = {
+      commentableType: "artist",
+      commentableId: this.model.id
+    };
+
+    var commentsView = new Savant.Views.showComments({ collection: this.model.comments(), commentableInfo: commentableInfo});
+    this.addSubview(this.commentsSelector, commentsView);
   }
 })
