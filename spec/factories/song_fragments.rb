@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :song_fragment do
-    association :song, factory: :song, strategy: :build
+    association :song
     offset_start 0
     offset_end  10
   end
