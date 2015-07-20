@@ -23,9 +23,12 @@ Savant.Views.NewComment = Backbone.View.extend({
 
     var formData = new FormData();
     formData.append("comment[contents]", contents);
-    formData.append("comment[commentable_type]", this.commentableInfo["commentableType"]);
-    formData.append("comment[commentable_id]", this.commentableInfo["commentableId"]);
-    formData.append("comment[image]", file);
+    formData.append("comment[commentable_type]", this.commentableInfo.commentableType);
+    formData.append("comment[commentable_id]", this.commentableInfo.commentableId);
+
+    if (file){
+      formData.append("comment[image]", file);
+    }
 
     this.model.saveFormData( formData, {
       success: function(){

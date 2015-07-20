@@ -37,7 +37,7 @@ Savant.Views.ShowSong = Backbone.CompositeView.extend({
       commentableId: this.model.id
     };
 
-    var commentsView = new Savant.Views.showComments({ collection: this.model.comments(), commentableInfo: commentableInfo});
+    var commentsView = new Savant.Views.ShowComments({ collection: this.model.comments(), commentableInfo: commentableInfo});
     this.addSubview(this.commentsSelector, commentsView);
   }
 

@@ -3,12 +3,12 @@ Savant.Views.ShowComments = Backbone.CompositeView.extend({
   commentSelector: ".comments-list",
   formSelector: ".new-comment-container",
 
-  events {
-    "focus .new-comment-pseudo-input":"newComment"
-  }
+  events: {
+    "focus input":"newComment"
+  },
 
   initialize: function(options){
-    this.commentableInfo = options;
+    this.commentableInfo = options.commentableInfo;
     this.listenTo(this.collection, "sync", this.render)
   },
 
@@ -23,7 +23,8 @@ Savant.Views.ShowComments = Backbone.CompositeView.extend({
   },
 
   newComment: function(event){
-    $(formSelector).empty();
+    console.log("In new comment");
+    $(this.formSelector).empty();
     var view = new Savant.Views.NewComment({ collection: this.collection, commentableInfo: this.commentableInfo});
     this.addSubview(this.formSelector, view);
     $(".new-comment-input").focus();

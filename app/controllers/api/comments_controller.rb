@@ -1,6 +1,12 @@
 class Api::CommentsController < ApplicationController
 
   def create
+    @comment = current_user.comments.build(comment_params)
+    if @comment.save
+      render :show
+    else
+      render json: @comment.errors.full_messages, status: 401
+    end
   end
 
   def destroy

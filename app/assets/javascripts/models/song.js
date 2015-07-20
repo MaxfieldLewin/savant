@@ -1,7 +1,7 @@
 Savant.Models.Song = Backbone.Model.extend({
   urlRoot: "/api/songs",
 
-  songFragments: function()
+  songFragments: function(){
     if(!this._songFragments) {
       this._songFragments = new Savant.Collections.SongFragments();
     }
@@ -23,7 +23,7 @@ Savant.Models.Song = Backbone.Model.extend({
       delete response.song_fragments;
     };
 
-    if (response.comments) {
+    if(response.comments) {
       this.comments().set(response.comments, {parse: true});
       delete response.comments;
     };
