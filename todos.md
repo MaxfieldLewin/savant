@@ -1,11 +1,14 @@
 ## MVP Features
 - [ ] Artist show page w/ inline edit
+- [ ] Song show header style
+- [ ] Comment style
 - [ ] Top-level Search
-- [ ] Gues login
+- [ ] Guest login
+- [ ] Vertical position of annotations
+- [ ] Refactor new annotation workflow
 
 ## Known bugs/incomplete features
-- [ ] Resolving annotation anchoring for repeated lyrics
-- [ ] Set up auth gating on C/U/D actions (front and backend)
+- [ ] Set up auth gating on C/U/D actions (backend)
 - [ ] Need to trim new song-fragments on word start/end
 - [ ] Re-anchoring annotations when song lyrics are updated
 - [ ] Flicker on annotation view clickaway to other annotation
