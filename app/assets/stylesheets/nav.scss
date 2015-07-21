@@ -1,4 +1,6 @@
 /* nav */
+@import "application.scss";
+
 .nav-main {
   color: #ccc;
   background-color: #151515;
@@ -12,9 +14,8 @@
 }
 
 .nav-layer-fixed {
-  max-width: 1040px;
+  @include fixed-width();
   height: 45px;
-  margin: auto;
   border-right: 1px solid #555;
 }
 

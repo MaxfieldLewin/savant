@@ -66,8 +66,9 @@ body {
   color: white;
 }
 
-#content {
+
+@mixin fixed-width() {
   display: block;
   margin: auto;
-  max-width: 1038px;
+  max-width: 1040px;
 }

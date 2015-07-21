@@ -1,11 +1,43 @@
 /* Show Song */
+@import "application.scss";
 
 .song-body-container {
+  @include fixed-width();
   border-left: 1px solid #333;
   color: #eee;
   font-family: 'Open Sans', sans-serif;
   font-size: 15px;
   line-size: 140%;
+}
+
+.song-show-image-container {
+  position: relative;
+  display: block;
+  height: 320px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.song-show-image-overlay::after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0.4;
+  background: url(asset-path("tooth_bg.png"));
+}
+
+.song-show-image {
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: auto;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
 }
 
 .lyrics-container {

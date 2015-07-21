@@ -1,5 +1,11 @@
 /* New Song */
 
+@import "application.scss";
+
+.song-form {
+  @include fixed-width();
+}
+
 .form-header {
   font-family: 'Abel', sans-serif;
   font-size: 40px;

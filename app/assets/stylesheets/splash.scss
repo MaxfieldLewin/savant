@@ -1,4 +1,9 @@
 /* Splash Page */
+@import "application.scss";
+
+.splash-fixed-content {
+  @include fixed-width();
+}
 
 .title {
   font-family: 'Varela Round', sans-serif;
