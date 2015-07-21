@@ -6,7 +6,8 @@ Savant.Views.NavBar = Backbone.View.extend({
   events: {
     "click #nav-signup":"signupModal",
     "click #nav-signin":"signinModal",
-    "click #nav-signout":"signout"
+    "click #nav-signout":"signout",
+    "click .nav-create-link":"checkSignIn"
   },
 
   initialize: function(options){
@@ -30,7 +31,7 @@ Savant.Views.NavBar = Backbone.View.extend({
     }
   },
 
-  signinModal: function(callback ){
+  signinModal: function(callback){
     var modal = this.$pageRef.find("#modal-container")
     modal.find(".modal-form").html(this.signinForm({ user: this.model }));
     modal.addClass("is-open");
@@ -73,7 +74,6 @@ Savant.Views.NavBar = Backbone.View.extend({
   submitSignin: function(event){
     event.preventDefault();
     var credentials = $(event.target).serializeJSON();
-    console.log(credentials);
     Savant.currentUser.signIn({
       login_string: credentials["login_string"],
       password: credentials["password"],
@@ -104,6 +104,14 @@ Savant.Views.NavBar = Backbone.View.extend({
       $(".small-title").removeClass("visible");
     } else {
       $(".small-title").addClass("visible");
+    }
+  },
+
+  checkSignIn: function(event){
+    if (!Savant.currentUser.isSignedIn()){
+      this.signinModal();
+    } else {
+      Savant.router.navigate("/#artists/new", { trigger: true })
     }
   }
 

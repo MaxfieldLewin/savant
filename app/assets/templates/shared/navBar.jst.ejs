@@ -12,11 +12,11 @@
       </ul>
 
       <div class="nav-group right">
-      <% if (user.isSignedIn()) { %>
+      <% if (Savant.currentUser.isSignedIn()) { %>
           <a class="nav-user-link" id="nav-signout" href="/#users/logout" >Sign Out</a>
       <% } else { %>
-        <a class="nav-user-link" id="nav-signup" href="/#signup"> Sign Up </a>
-        <a class="nav-user-link" id="nav-signin" href="/#signin"> Sign In </a>
+        <a class="nav-user-link" id="nav-signup" href="/#"> Sign Up </a>
+        <a class="nav-user-link" id="nav-signin" href="/#"> Sign In </a>
       <% } %>
       </div>
     </div>
@@ -29,7 +29,7 @@
       </div>
 
       <div class="nav-group nav-create-group right">
-        <a class= "nav-create-link" href="/#songs/new"> Add Song </a>
+        <a class= "nav-create-link" href="/#"> Add Song </a>
       </div>
     </div>
   </div>
