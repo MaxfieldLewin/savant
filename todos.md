@@ -1,11 +1,9 @@
 ## MVP Features
 - [ ] Vertical position of annotations
 - [ ] Artist show page w/ inline edit
-- [ ] Song show header style
 - [ ] Comment style
 - [ ] Top-level Search
 - [ ] Guest login
-- [ ] Refactor new annotation workflow
 
 ## Known bugs/incomplete features
 - [ ] Set up auth gating on C/U/D actions (backend)

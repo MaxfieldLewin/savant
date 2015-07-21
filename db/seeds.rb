@@ -25,7 +25,7 @@ artists.each do |artist|
       title = "So #{Faker::Hacker.adjective.capitalize} they call me #{Faker::App.name}"
     end
 
-    contents = Faker::Lorem.paragraphs(4);
+    contents = Faker::Lorem.paragraphs(4).join;
 
     artist_model.songs.create(title: title, contents: contents)
   end

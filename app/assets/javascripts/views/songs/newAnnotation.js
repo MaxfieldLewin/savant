@@ -25,6 +25,7 @@ Savant.Views.NewAnnotation = Backbone.View.extend({
       success: function(){
         this.fragment._annotation = this.model;
         this.collection.add(this.fragment, {merge: true});
+        this.$el.trigger("submitNewAnnotation");
       }.bind(this)
     })
   },

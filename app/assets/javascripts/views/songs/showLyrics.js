@@ -8,6 +8,7 @@ Savant.Views.ShowLyrics = Backbone.CompositeView.extend({
     "click a":"displayAnnotation",
     "clickAway":"displayDescription",
     "cancelNewAnnotation":"render",
+    "submitNewAnnotation":"render",
     "mouseup":"maybeAnnotate"
   },
 
@@ -44,13 +45,14 @@ Savant.Views.ShowLyrics = Backbone.CompositeView.extend({
 
   displayAnnotation: function(event){
     event.preventDefault();
+    var ypos = event.currentTarget.offsetTop;
     var fragmentId = $(event.currentTarget).attr("href").slice(16);
     //todo: find a better waty to do this (16 is len of '/#songFragments/')
     var fragment = this.model.songFragments().get(fragmentId);
     var lyricView = this;
     fragment.fetch({
       success: function(){
-        var annotationView = new Savant.Views.ShowAnnotation({ model: fragment.annotation() });
+        var annotationView = new Savant.Views.ShowAnnotation({ model: fragment.annotation(), ypos: ypos });
         lyricView.swapDetailsView(annotationView);
       }
     })
@@ -61,7 +63,6 @@ Savant.Views.ShowLyrics = Backbone.CompositeView.extend({
     $("a[href='/#songFragments/" + fragment.id + "']").addClass("maybe-annotation");
     var newAnnotationView = new Savant.Views.NewAnnotation({ collection: this.model.songFragments(), fragment: fragment });
     this.swapDetailsView(newAnnotationView);
-    this.listenToOnce(this.model.songFragments(), "add", this.render);
   },
 
   maybeAnnotate: function(event){
@@ -74,6 +75,7 @@ Savant.Views.ShowLyrics = Backbone.CompositeView.extend({
 
       //this conditional is trying to handle cases of repeated lyrics
       if( offsetStart !== lyrics.lastIndexOf(selected)) {
+        console.log("in repeat handler");
         if(selection.anchorOffset < selection.focusOffset){
           var selectionNodeOffset = selection.anchorOffset;
         } else {
