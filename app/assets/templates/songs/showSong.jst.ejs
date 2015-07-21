@@ -1,19 +1,25 @@
 
-<div class="song-show-image-container">
-  <img class="song-show-image" src="<%= song.escape('image_url')%>">
-  <div class="song-show-image-overlay">
+<div class="song-image-header-container">
+  <div class="song-image-inner-container">
+    <img class="song-show-image" src="<%= song.escape('image_url')%>">
+    <div class="song-show-image-overlay">
+    </div>
+  </div>
+
+  <div class="song-header-fixed-container">
+    <div class="song-header-inner-container">
+      <section class="song-metadata">
+      </section>
+
+      <section class="song-byline">
+        <h1 class="song-show-title"><%= song.escape('title') %></h1>
+        <a class="song-show-artist-hover" href="/#artists/<%= song.escape('artist_id') %>"><h2 class="song-show-artist-name"><%= song.escape('artist_name') %></h2></a>
+      </section>
+    </div>
   </div>
 </div>
-<div class="song-body-container">
-  <section class="song-header">
-    <section class="song-metadata">
-    </section>
 
-    <section class="song-byline">
-      <h1 class="song-show-title"><%= song.escape('title') %></h1>
-      <a class="song-show-artist-hover" href="/#artists/<%= song.escape('artist_id') %>"><h2 class="song-show-artist-name"><%= song.escape('artist_name') %></h2></a>
-    </section>
-  </section>
+<div class="song-body-container">
 
   <section class="song-social-buttons-container">
     <button class="edit-lyrics">Edit Lyrics</button>
