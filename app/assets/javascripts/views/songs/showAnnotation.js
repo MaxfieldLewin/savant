@@ -4,12 +4,12 @@ Savant.Views.ShowAnnotation = Backbone.CompositeView.extend({
   commentsSelector: ".details-comments-container",
 
   initialize: function(options){
-    this.verticalOffset = options.ypos - 410; //nav + song image heights, not going to be exact
+    this.verticalOffset = options.ypos - 440; //nav + song image heights, not going to be exact
   },
 
   render: function(){
     this.$el.html(this.template({ title: "Savant Annotation", details: this.model.get("contents") }));
-    this.$el.css("top", this.verticalOffset);
+    this.$el.css({top: this.verticalOffset});
     this.showComments();
     Backbone.$("body").on("click", this.checkClickAway.bind(this));
     return this;
