@@ -8,13 +8,12 @@ Savant.Views.ShowSong = Backbone.CompositeView.extend({
   commentsSelector: ".song-comments-container",
 
   render: function () {
-    debugger
     this.$el.html(this.template({ song: this.model }));
     this.showLyrics();
     this.showComments();
     return this;
   },
-  
+
 
   showLyrics: function () {
     if(this._mainView){

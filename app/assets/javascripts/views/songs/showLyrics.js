@@ -29,15 +29,8 @@ Savant.Views.ShowLyrics = Backbone.CompositeView.extend({
     this.model.songFragments().forEach( function (fragment) {
       var fragmentRawText = lyrics.substring(fragment.get("offset_start"), fragment.get("offset_end") + 1)
       var fragmentLink = fragmentRawText.link('/#songFragments/' + fragment.id);
-      workingLyrics = workingLyrics.replace(fragmentRawText, function (match, offset, string) {
-        //need to ensure repeated lyrics don't get replaced by the same fragment
-        if (offset === fragment.get("offset_start") + workingOffset){
-          workingOffset += (fragmentLink.length - fragmentRawText.length);
-          return fragmentLink;
-        } else {
-          return fragmentRawText;
-        }
-      })
+      workingLyrics = workingLyrics.slice(0, fragment.get("offset_start") + workingOffset) + fragmentLink + workingLyrics.slice(fragment.get("offset_end") + workingOffset + 1);
+      workingOffset += (fragmentLink.length - fragmentRawText.length);
     })
     $(".formatted-lyrics").html(workingLyrics);
 
