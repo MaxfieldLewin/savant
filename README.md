@@ -9,6 +9,6 @@ Some interesting code to check out can be found in the following locations:
 - [Using twitter's typeahead library to autocomplete artist names when making a new song] [newartist]
 
 [showlyrics]: ./app/assets/javascripts/views/songs/showLyrics.js
-[testlyrics]: ./app/spec/models/song_fragments_spec.rb
-[newartist]: ./app/assets/javascripts/views/artists/newArtist.js
+[testlyrics]: ./app/spec/models/song_fragment_spec.rb
+[newartist]: ./app/assets/javascripts/views/artists/newSong.js
 [rg]: www.genius.com
