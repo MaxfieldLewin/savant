@@ -1,9 +1,12 @@
+# NO MORE TODOS ALLOWED
+
 ## MVP Features
-- [ ] Vertical position of annotations
 - [ ] Artist show page w/ inline edit
 - [ ] Comment style
 - [ ] Top-level Search
 - [ ] Guest login
+
+# NO MORE TODOS ALLOWED
 
 ## Known bugs/incomplete features
 - [ ] Set up auth gating on C/U/D actions (backend)
@@ -11,6 +14,8 @@
 - [ ] Re-anchoring annotations when song lyrics are updated
 - [ ] Flicker on annotation view clickaway to other annotation
 - [ ] Make splash page images more rectangular
+
+# NO MORE TODOS ALLOWED
 
 ## Stretch Goals
 - [ ] Taggable
@@ -21,3 +26,5 @@
 - [ ] Likeable
 - [ ] Followable
 - [ ] Make annotations markdown
+
+# NO MORE TODOS ALLOWED
