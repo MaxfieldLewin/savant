@@ -1,0 +1,79 @@
+/* Splash Page */
+
+.title {
+  font-family: 'Varela Round', sans-serif;
+  font-weight: bold;
+  display: block;
+  color: black;
+}
+
+.big-title {
+  transform: translateX(4px);
+  font-size: 76px;
+  margin: 40px;
+  margin-bottom: 10px;
+  text-shadow: -7px 4px #ffff64;
+  text-align: center;
+  letter-spacing: 12px;
+}
+
+.small-slogan {
+  display: block;
+  font-family: "Open Sans", sans-serif;
+  font-size: 18px;
+  font-weight: lighter;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.splash-song{
+  display: block;
+  width: 336px;
+  float: left;
+  position: relative;
+  margin: 0px 0px 6px 10px;
+}
+
+.splash-song:first-child {
+  width: 682px;
+}
+
+.splash-song-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.splash-song-image {
+  width: 100%;
+  height: auto;
+}
+
+.splash-song-image-overlay::before {
+  content: "";
+  position: absolute;
+  display: block;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0.4;
+  background: url(asset-path("tooth_bg.png"));
+}
+
+.splash-song-byline {
+  position: absolute;
+  display: block;
+  left: 12px;
+  bottom: 12px;
+  right: 12px;
+  color: #fff;
+  font-size: 30px;
+  font-weight: bold;
+  font-family: "Abel", sans-serif;
+}
+
+.splash-song-artist {
+  font-size: 24px;
+  font-weight: normal;
+}

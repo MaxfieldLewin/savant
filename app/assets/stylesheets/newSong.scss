@@ -1,0 +1,76 @@
+/* New Song */
+
+.form-header {
+  font-family: 'Abel', sans-serif;
+  font-size: 40px;
+  font-weight: bolder;
+  color: #fff;
+  display: block;
+  margin: 20px 0px 10px 1px;
+}
+
+.input-group {
+  display: block;
+  border-bottom: 1px solid #303030;
+}
+
+.input-group > div {
+  display: block;
+  float: left;
+  margin: 20px;
+}
+
+.song-form label {
+  font-family: 'Abel', sans-serif;
+  font-size: 15px;
+}
+
+.song-form-byline {
+  width: 300px;
+}
+
+#new-song-artist-search .tt-menu {
+  width: 300px;
+  color: #ede8e9;
+  background-color: #141414;
+  font-size: 14px;
+  font-family: 'Open Sans', sans-serif;
+  border: 1px solid #3a3a3a;
+  margin-left: 8px;
+}
+
+#new-song-artist-search .tt-suggestion:nth-child(2n + 0) {
+  background-color: #212121;
+}
+
+#new-song-artist-search .tt-highlight {
+  color: #ffff64;
+}
+
+.song-form-byline, .lyrics-textarea {
+  font-size: 15px;
+  border: 1px solid #bbb;
+  border-radius: 2px;
+  padding: 5px;
+}
+
+.input-textarea-container{
+  width: 100%;
+  padding: 20px 0px;;
+}
+
+.lyrics-textarea {
+  width: 100%;
+  min-height: 480px;
+  resize: none;
+}
+
+.form-button {
+  color: #ccc;
+  font-size: 13px;
+  background-color: #262626;
+  border: 1px solid #444;
+  border-radius: 2px;
+  padding: 5px 9px;
+  margin: 3px 4px 5px 0px;
+}
