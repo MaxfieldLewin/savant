@@ -7,7 +7,7 @@ Savant.Views.ShowLyrics = Backbone.CompositeView.extend({
   events: {
     "click a":"displayAnnotation",
     "clickAway":"displayDescription",
-    "cancelNewAnnotation":"displayDescription",
+    "cancelNewAnnotation":"render",
     "mouseup":"maybeAnnotate"
   },
 
@@ -23,6 +23,7 @@ Savant.Views.ShowLyrics = Backbone.CompositeView.extend({
   },
 
   installFragments: function(){
+
     var lyrics = $(".formatted-lyrics").text();
     var workingLyrics = lyrics.slice(0, lyrics.length);
     var workingOffset = 0;
@@ -57,6 +58,7 @@ Savant.Views.ShowLyrics = Backbone.CompositeView.extend({
   },
 
   displayNewAnnotation: function(fragment){
+    $("a[href='/#songFragments/" + fragment.id + "']").addClass("maybe-annotation");
     var newAnnotationView = new Savant.Views.NewAnnotation({ collection: this.model.songFragments(), fragment: fragment });
     this.swapDetailsView(newAnnotationView);
     this.listenToOnce(this.model.songFragments(), "add", this.render);
@@ -93,6 +95,11 @@ Savant.Views.ShowLyrics = Backbone.CompositeView.extend({
         var trueOffset = modifiedLyrics.indexOf(matchStr) + selectionNodeOffset;
 
         var replacementNode = document.createTextNode(nodeText);
+
+        // var replacementNode = document.createElement("span");
+        // replacementNode.appendChild(replacementTextNode);
+        // replacementNode.setAttribute("class", "maybe-annotation")
+
         matchStrNode.parentNode.insertBefore(replacementNode, matchStrNode);
         matchStrNode.parentNode.removeChild(matchStrNode);
 
@@ -114,6 +121,8 @@ Savant.Views.ShowLyrics = Backbone.CompositeView.extend({
       },
       {
         success: function(){
+          this.model.songFragments().add(maybeFragment);
+          this.render();
           this.displayNewAnnotation(maybeFragment);
         }.bind(this),
       });
