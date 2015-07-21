@@ -1,66 +1,11 @@
-# Savant
+[Savant][app]
+[app]: www.hiphopsavant.com
 
-[Heroku link][heroku]
+Savant aka HipHopSavant is a clone of the awesome app [Genius][rg] aka RapGenius, a text annotation platform. It allows users to upload the texts of songs, articles, poems, instruction manuals, or any other kind of textual material and collaboratively annotate them. So far I've implemented the basic functionality, though I have a long way to go particularly in the area of tracking collaborations - Genius shows what percentage of a given annotation each user contributed. I do apologize for not having better seed data so far, though I do have one real song seeded with some annotations, it can be reached by navigating to '/#songs/36'. I also apologize for not getting a chance to implement a guest user acct yet, but please sign in with username "max", pw "maxmax", or just make a new acct, or sign in with twitter!
 
-[heroku]: https://hiphopsavant.herokuapp.com/
+Some interesting code to check out can be found in the following locations:
+- [Handling the display and creation of new annotations] [/app/assets/javascripts/views/songs/showLyrics.js]
+- [Testing the uniqueness constraints of annotations] [/app/spec/models/song_fragments_spec.rb]
+- [Using twitter's typeahead library to autocomplete artist names when making a new song] [/app/assets/javascripts/views/artists/newArtist.js]
 
-## Minimum Viable Product
-Savant is a Genius clone built on Rails and Backbone. Users can:
-
-- [X] Create accounts
-- [X] Create sessions (log in)
-- [X] Add artists & texts (song lyrics, news articles, poems, any item of public record)
-- [X] Annotate texts line-by-line
-- [ ] Comment on texts, annotations, and artists
-- [ ] View texts with their annotations and comments as a cohesive, single-page experience
-- [ ] Tag songs and artists
-- [ ] Search for songs by title, artist, contents and tags
-
-## Design Docs
-* [View Wireframes][views]
-* [DB schema][schema]
-
-[views]: ./docs/views.md
-[schema]: ./docs/schema.md
-
-## Implementation Timeline
-
-### Phase 1: User Authentication, Song and Artist Creation (~1 day)
-I will implement user authentication in Rails based on the practices learned at
-App Academy. By the end of this phase, users will be able to create blogs using
-a simple text form in a Rails view. The most important part of this phase will
-be pushing the app to Heroku and ensuring that everything works before moving on
-to phase 2.
-
-[Details][phase-one]
-
-### Phase 2: Viewing and Editing Artists and Songs (~2 days)
-I'll implement the API routes for serving Song and Artist data. I'll implement the top level Backbone models and composite views, particularly enabling in-place editing of Artist data, and non-lyric Song data (lyrics can't be in-place because annotation events need to target the same elements, so lyric editing will be a modal).
-
-[Details][phase-two]
-
-### Phase 3: Adding, Editing and Viewing Song Annotations (~4 days)
-The main feature, I'll implement the API for serving Annotation data. This will also involve writing parsing logic to separate the raw song lyrics into song-fragments, though this will be invisible on the front-end - basically, when a user highlights an as yet unannotated portion of a song lyric, a new song-fragment pointing to that portion of the raw lyric will be instantiated, which the annotation will point to. Once the annotation is made, the song view will show the annotated fragment as highlighted, and an annotation view will appear adjacent to the song lyric on click of the fragment. If the annotation author is viewing, they will also be able to edit this annotation in-place.
-
-[Details][phase-three]
-
-### Phase 4: Moderators and Contributions (~3 days)
-Next, I'll implement the feature of moderators approving or denying various changes, and tracking various user's contributions to the evolution of a song's lyrics and annotations. This will involve implementing a Rails job or task which will be triggered on an update to a song's lyrics or an annotation's contents, and will diff the current version of the lyrics/contents against each prior version, to calculate the percentage of the current version accounted for by each individual's contribution, and accordingly update the model's fields. I'll utilize a third-party gem like diff-LCS or diffy for this.
-
-[Details][phase-four]
-
-### Phase 5: Commenting, Tagging, Liking, Following (~2 days)
-Finally, I'll implement the various models and polymorphic associations to allow users to be able to comment on artists/songs/annotations, tag artists/songs, like artists/songs/annotations, and follow artists and other users.
-
-[Details][phase-five]
-
-### Bonus Features (TBD)
-- [ ] Embeded images and videos in annotations
-- [ ] Tag pages (i.e. Rap Savant, Pop Savant, etc) with custom URLs
-- [ ] Verified Artists
-
-[phase-one]: ./docs/phases/phase1.md
-[phase-two]: ./docs/phases/phase2.md
-[phase-three]: ./docs/phases/phase3.md
-[phase-four]: ./docs/phases/phase4.md
-[phase-five]: ./docs/phases/phase5.md
+[rg]: www.genius.com
