@@ -1,0 +1,44 @@
+@import "application.scss";
+
+.footer-main {
+  display: block;
+  margin-top: 30px;
+  background-color: rgb(34,34,34);
+}
+
+.foot-layer {
+  display: block;
+  width: 100%;
+  font-family: "Open Sans", sans-serif;
+  height: 50px;
+}
+
+.footer-layer.top {
+  font-size: 14px;
+  color: rgb(204, 204, 204);
+}
+
+.foot-layer-fixed {
+  position: absolute;
+  right: 50%;
+  transform: translateX(-50%);
+}
+
+.footer-layer.bottom {
+  font-size: 12px;
+  color: rgb(153, 153, 153);
+}
+
+.footer-group {
+  display: block;
+  margin: auto;
+}
+
+.footer-group > li {
+  display: block;
+  float: left;
+}
+
+.footer-group > li::after {
+  content: "•";
+}

@@ -2,6 +2,7 @@ Savant.Routers.Router = Backbone.Router.extend({
   initialize: function(options){
     this.$rootEl = options.$rootEl;
     this.installNav();
+    this.installFooter();
   },
 
   routes: {
@@ -20,7 +21,11 @@ Savant.Routers.Router = Backbone.Router.extend({
         $("#nav-container").html(this._navBar.render().$el);
       }.bind(this)
     })
+  },
 
+  installFooter: function(){
+    this._footer = new Savant.Views.Footer();
+    $("#footer-container").html(this._footer.render().$el);
   },
 
   splashPage: function(id){
