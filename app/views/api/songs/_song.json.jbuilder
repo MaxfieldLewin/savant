@@ -1,7 +1,7 @@
 json.extract! song, :id, :title, :artist_id
-json.artist_name song.artist.name
 if details
   json.extract! song, :description, :contents
+  json.artist_name song.artist.name
   json.image_url asset_path(song.image.url(:original))
 
   json.song_fragments song.song_fragments do |fragment|
@@ -14,5 +14,6 @@ if details
 end
 
 if splash
+  json.artist_name song.artist.name
   json.image_url asset_path(song.image.url(:original))
 end

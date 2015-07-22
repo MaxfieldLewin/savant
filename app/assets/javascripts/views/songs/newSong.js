@@ -32,7 +32,8 @@ Savant.Views.NewSong = Backbone.View.extend({
 
   substringMatcher: function(artistNames){
     return function findMatches(q, cb) {
-      var matches, substringRegex;
+
+      var matches, substrRegex;
 
       // an array that will be populated with substring matches
       matches = [];

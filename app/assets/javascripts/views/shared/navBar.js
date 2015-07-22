@@ -2,23 +2,51 @@ Savant.Views.NavBar = Backbone.View.extend({
   template: JST['shared/navBar'],
   signupForm: JST['shared/signup'],
   signinForm: JST['shared/signin'],
+  resultsBox: JST['shared/resultsBox'],
 
   events: {
     "click #nav-signup":"signupModal",
     "click #nav-signin":"signinModal",
     "click #nav-signout":"signout",
-    "click .nav-create-link":"checkSignIn"
+    "click .nav-create-link":"checkSignIn",
+    "input .nav-search-bar":"updateSearchResults"
   },
 
   initialize: function(options){
     this.$pageRef = Backbone.$(document);
     this.listenTo(Savant.currentUser, "signIn signOut", this.render);
     this.listenTo(Backbone.history, "route", this.toggleSmallTitle);
+
+    this.searchResults = new Savant.Collections.SearchResults();
+    this.listenTo(this.searchResults, "sync", this.displaySearchResults);
+    this.listenTo(Backbone.history, "route", this.clearSearchResults)
+
   },
 
   render: function(){
     this.$el.html(this.template({ user: Savant.currentUser }));
     return this;
+  },
+
+  updateSearchResults: function(event){
+    var queryStr = $(event.currentTarget).val();
+    if (queryStr.length < 2){
+      this.clearSearchResults();
+    } else {
+      this.searchResults.fetch({ data: { query: queryStr } });
+    }
+  },  
+
+  displaySearchResults: function(){
+    if (!this.searchResults.isEmpty()){
+      $(".nav-search-box").addClass("active");
+      $(".nav-search-box").html(this.resultsBox({ models: this.searchResults.models }));
+    }
+  },
+
+  clearSearchResults: function(){
+    $(".nav-search-box").removeClass("active");
+    $(".nav-search-box").empty();
   },
 
   signupModal: function(){

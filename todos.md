@@ -3,8 +3,9 @@
 ## MVP Features
 - [ ] Artist show page w/ inline edit
 - [ ] Comment style
-- [ ] Top-level Search
+- [X] Top-level Search
 - [ ] Guest login
+- [ ] Quality Seeds
 
 # NO MORE TODOS ALLOWED
 

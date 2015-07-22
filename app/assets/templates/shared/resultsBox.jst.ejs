@@ -1,0 +1,11 @@
+<ul class="nav-search-results-list">
+  <% models.forEach( function(model){ %>
+    <li class="nav-search-results-item">
+    <% if (model instanceof Savant.Models.Artist) { %>
+      <a href="#artists/<%= model.id %>"> Artist: <%= model.escape("name") %></a>
+    <% } else { %>
+      <a href="#songs/<%= model.id %>"> Song: <%= model.escape("title") %></a>
+    <% } %>
+    </li>
+  <% }) %>
+</ul>
