@@ -14,6 +14,7 @@ gem 'figaro'
 gem 'omniauth-twitter'
 gem 'paperclip'
 gem 'aws-sdk', '~> 1.6'
+gem 'pg_search'
 
 group :development, :test do
   gem 'rspec-rails'

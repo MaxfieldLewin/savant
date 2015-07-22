@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: song_fragments
+#
+#  id           :integer          not null, primary key
+#  song_id      :integer          not null
+#  offset_start :integer          not null
+#  offset_end   :integer          not null
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#
+
 class SongFragment < ActiveRecord::Base
   validates :song_id, :offset_start, :offset_end, presence: true
   validate :fragment_interval_available

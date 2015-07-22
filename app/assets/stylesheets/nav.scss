@@ -91,8 +91,25 @@
   color: #5ba7c2;
 }
 
+.nav-create-link {
+  float: left;
+}
+
 .nav-create-link:hover {
   background-color: #292929;
+}
+
+.nav-search-bar {
+  display: block;
+  float: left;
+  background-color: #292929;
+  border: 1px solid #555;
+  color: #ccc;
+  font-size: 14px;
+  border-radius: 8px;
+  width: 380px;
+  padding: 5px;
+  margin-right: 10px;
 }
 
 

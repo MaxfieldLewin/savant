@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: song_fragments
+#
+#  id           :integer          not null, primary key
+#  song_id      :integer          not null
+#  offset_start :integer          not null
+#  offset_end   :integer          not null
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#
+
 require 'rails_helper'
 require 'spec_helper'
 
