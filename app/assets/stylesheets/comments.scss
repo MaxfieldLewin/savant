@@ -1,0 +1,22 @@
+.song-comments-container {
+  width: 50%;
+  background-color: rgba(153,153,153,0.09);
+  padding: 5px;
+}
+
+.comment-list-item {
+  border-bottom: 1px solid rgba(153,153,153,0.18);
+  width: 100%;
+  font-family: "Open Sans", sans-serif;
+  color: white;
+  margin-bottom: 5px;
+}
+
+.comment-username {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.comment-contents {
+  font-size: 12px;
+}

@@ -4,7 +4,8 @@
 - [X] Top-level Search
 - [ ] Guest login
 - [ ] Quality Seeds
-- [ ] Genres
+- [X] Genres
+- [ ] Genre splash
 
 ## Known bugs/incomplete features
 - [ ] Set up auth gating on C/U/D actions (backend)

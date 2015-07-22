@@ -6,6 +6,7 @@ Savant.Routers.Router = Backbone.Router.extend({
 
   routes: {
     "":"splashPage",
+    "genres/:id":"splashPage",
     "songs/new":"newSong",
     "songs/:id":"showSong",
     "artists/:id":"showArtist"
@@ -22,7 +23,7 @@ Savant.Routers.Router = Backbone.Router.extend({
 
   },
 
-  splashPage: function(){
+  splashPage: function(id){
     var songs = new Savant.Collections.Songs();
     songs.fetch();
     var view = new Savant.Views.SplashPage({ collection: songs });
