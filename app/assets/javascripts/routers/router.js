@@ -12,8 +12,14 @@ Savant.Routers.Router = Backbone.Router.extend({
   },
 
   installNav: function(){
-    this._navBar = new Savant.Views.NavBar({ model: new Savant.Models.User() });
-    $("#nav-container").html(this._navBar.render().$el);
+    var genres = new Savant.Collections.Genres();
+    genres.fetch({
+      success: function(){
+        this._navBar = new Savant.Views.NavBar({ model: new Savant.Models.User(), collection: genres });
+        $("#nav-container").html(this._navBar.render().$el);
+      }.bind(this)
+    })
+
   },
 
   splashPage: function(){

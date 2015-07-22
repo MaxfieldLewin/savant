@@ -3,9 +3,9 @@ Rails.application.routes.draw do
   namespace :api, defaults: {format: :json} do
 
     get "/search", to: "search#search"
-
     resource :session, only: [:show, :create, :destroy]
     resources :users, except: [:new, :edit]
+    resources :genres, only: [:show, :index]
     resources :artists, except: [:create, :new, :edit]
     resources :songs, except: [:new, :edit]
     resources :song_fragments, except: [:new, :edit]

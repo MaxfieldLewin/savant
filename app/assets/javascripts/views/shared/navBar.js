@@ -24,7 +24,7 @@ Savant.Views.NavBar = Backbone.View.extend({
   },
 
   render: function(){
-    this.$el.html(this.template({ user: Savant.currentUser }));
+    this.$el.html(this.template({ user: Savant.currentUser, genres: this.collection }));
     return this;
   },
 
@@ -35,7 +35,7 @@ Savant.Views.NavBar = Backbone.View.extend({
     } else {
       this.searchResults.fetch({ data: { query: queryStr } });
     }
-  },  
+  },
 
   displaySearchResults: function(){
     if (!this.searchResults.isEmpty()){

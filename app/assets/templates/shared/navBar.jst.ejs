@@ -2,13 +2,9 @@
   <div class="nav-layer">
     <div class="nav-layer-fixed group">
       <ul class="nav-group nav-tag-list left">
-        <li class="nav-tag-item">Rap</li>
-        <li class="nav-tag-item">Pop</li>
-        <li class="nav-tag-item">Rock</li>
-        <li class="nav-tag-item">R&B</li>
-        <li class="nav-tag-item">News</li>
-        <li class="nav-tag-item">Tech</li>
-        <li class="nav-tag-item">Law</li>
+        <% genres.forEach( function(genre){ %>
+          <li class="nav-tag-item"><a href="#genres/<%= genre.id%>"><%= genre.escape("genre_name") %></a></li>
+        <% }) %>
       </ul>
 
       <div class="nav-group right">

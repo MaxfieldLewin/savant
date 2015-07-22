@@ -11,6 +11,13 @@ max = User.create!(username: "max", email: "max@max.max", password: "maxmax")
 
 artists = ["Lil B", "MF DOOM", "Gucci Mane", "William Shakespeare", "William Shattner", "Will Smith", "Will.I.Am"]
 
+rap = Genre.create!(genre_name: "Rap")
+pop = Genre.create!(genre_name: "Pop")
+rock = Genre.create!(genre_name: "Rock")
+rab = Genre.create!(genre_name: "R&B")
+news = Genre.create!(genre_name: "News")
+tech = Genre.create!(genre_name: "Tech")
+law = Genre.create!(genre_name: "Law")
 
 artists.each do |artist|
   artist_model = Artist.create!(name: artist)

@@ -1,13 +1,10 @@
-# NO MORE TODOS ALLOWED
-
 ## MVP Features
 - [ ] Artist show page w/ inline edit
 - [ ] Comment style
 - [X] Top-level Search
 - [ ] Guest login
 - [ ] Quality Seeds
-
-# NO MORE TODOS ALLOWED
+- [ ] Genres
 
 ## Known bugs/incomplete features
 - [ ] Set up auth gating on C/U/D actions (backend)
@@ -16,10 +13,8 @@
 - [ ] Flicker on annotation view clickaway to other annotation
 - [ ] Make splash page images more rectangular
 
-# NO MORE TODOS ALLOWED
-
 ## Stretch Goals
-- [ ] Taggable
+
 - [ ] User/Artist hover boxes
 - [ ] Youtube and/or Soundcloud embeds
 - [ ] Moderator User
@@ -27,5 +22,3 @@
 - [ ] Likeable
 - [ ] Followable
 - [ ] Make annotations markdown
-
-# NO MORE TODOS ALLOWED
