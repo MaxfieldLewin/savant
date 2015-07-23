@@ -10,7 +10,7 @@
 
 ## Known bugs/incomplete features
 - [ ] Set up auth gating on C/U/D actions (backend)
-- [ ] Need to trim new song-fragments on word start/end
+- [X] Need to trim new song-fragments on word start/end
 - [ ] Re-anchoring annotations when song lyrics are updated
 - [ ] Flicker on annotation view clickaway to other annotation
 - [ ] Make splash page images more rectangular

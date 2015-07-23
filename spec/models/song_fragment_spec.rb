@@ -50,9 +50,6 @@ RSpec.describe SongFragment, type: :model do
       @fragmentOne = @song.song_fragments.create(offset_start: 0, offset_end: 5)
       @fragmentTwo = @song.song_fragments.create(offset_start: 6, offset_end: 10)
 
-      # @fragmentOne.valid?
-      # @fragmentTwo.valid?
-
       expect( @fragmentOne.offset_end ).to eq(4)
       expect( @fragmentTwo.offset_end ).to eq(9)
     end
@@ -61,17 +58,12 @@ RSpec.describe SongFragment, type: :model do
       @fragmentOne = @song.song_fragments.create(offset_start: 5, offset_end: 9)
       @fragmentTwo = @song.song_fragments.create(offset_start: 10, offset_end: 13)
 
-      # @fragmentOne.valid?
-      # @fragmentTwo.valid?
-
       expect( @fragmentOne.offset_start ).to eq(6)
       expect( @fragmentTwo.offset_start ).to eq(11)
     end
 
     it "adjusts fragments with whitespace on both ends" do
       @fragment = @song.song_fragments.create(offset_start: 5, offset_end: 14)
-
-      # @fragment.valid?
 
       expect( @fragment.offset_start ).to eq(6)
       expect( @fragment.offset_end ).to eq(13)

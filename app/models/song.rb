@@ -20,9 +20,10 @@ class Song < ActiveRecord::Base
 
   has_attached_file :image, default_url: "missing.jpg"
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
-
   validates :title, :artist_id, :contents, presence: true
   validates :title, uniqueness: {scope: :artist_id}
+
+  around_update :adjust_fragments
 
   belongs_to :artist
 
@@ -38,4 +39,9 @@ class Song < ActiveRecord::Base
 
 
   multisearchable against: [:title, :contents]
+
+  def adjust_fragments
+    previous_contents = self.contents
+    yield
+  end
 end

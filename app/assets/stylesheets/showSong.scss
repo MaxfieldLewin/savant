@@ -88,10 +88,22 @@
 .lyrics-container {
   display: block;
   float: left;
-  max-width: 50%;
+  max-width: 45%;
+  padding-left: 15px;
 }
 
-.formatted-lyrics {
+.song-edit-textarea {
+  width: 50%;
+  padding: 15px;
+  background: transparent;
+  color: #eee;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 15px;
+  outline: none;
+  border: none;
+}
+
+.formatted-lyrics, .song-edit-textarea {
   white-space: pre-wrap;
 }
 
@@ -106,10 +118,11 @@
 
 .details-container {
   display: block;
-  float: left;
-  width: 49%;
+  float: right;
+  width: 45%;
   position: relative;
   border-left: 1px solid rgb(98, 98, 98);
+  padding-left: 15px;
 
 }
 

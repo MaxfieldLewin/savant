@@ -3,11 +3,14 @@ Savant.Views.EditLyrics = Backbone.View.extend({
 
   events: {
     "click .cancel-edit":"cancelEdit",
-    "click .submit-edit":"submitEdit"
+    "click .submit-edit":"submitEdit",
+    "keyup":"adjustEditBoxHeight",
+    "keydown":"adjustEditBoxHeight"
   },
 
   render: function () {
     this.$el.html(this.template({ song: this.model }));
+    this.adjustEditBoxHeight()
     return this;
   },
 
@@ -20,5 +23,13 @@ Savant.Views.EditLyrics = Backbone.View.extend({
     this.model.set("contents", newContents);
     this.model.save();
     this.trigger("submitEdit");
+  },
+
+  adjustEditBoxHeight: function(){
+    var tempScrollTop = $(window).scrollTop();
+    var editBox = $(".song-edit-textarea")[0];
+    editBox.style.height = "1px";
+    editBox.style.height = (editBox.scrollHeight) + "px";
+    $(window).scrollTop(tempScrollTop);
   }
 })

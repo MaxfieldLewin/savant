@@ -98,10 +98,6 @@ Savant.Views.ShowLyrics = Backbone.CompositeView.extend({
 
         var replacementNode = document.createTextNode(nodeText);
 
-        // var replacementNode = document.createElement("span");
-        // replacementNode.appendChild(replacementTextNode);
-        // replacementNode.setAttribute("class", "maybe-annotation")
-
         matchStrNode.parentNode.insertBefore(replacementNode, matchStrNode);
         matchStrNode.parentNode.removeChild(matchStrNode);
 
