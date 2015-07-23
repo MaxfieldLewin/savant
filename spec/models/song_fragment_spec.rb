@@ -44,33 +44,34 @@ RSpec.describe SongFragment, type: :model do
 
     before(:each) do
       @song = create(:song, contents: "aaaaa bbbb\nccc dd\n")
+    end
 
     it "adjusts the fragment offset_end to trim trailing spaces or newlines" do
-      @fragmentOne = @song.song_fragments.build(offset_start: 0, offset_end: 5)
-      @fragmentTwo = @song.song_fragments.build(offset_start: 6, offset_end: 10)
+      @fragmentOne = @song.song_fragments.create(offset_start: 0, offset_end: 5)
+      @fragmentTwo = @song.song_fragments.create(offset_start: 6, offset_end: 10)
 
-      @fragmentOne.valid?
-      @fragmentTwo.valid?
+      # @fragmentOne.valid?
+      # @fragmentTwo.valid?
 
       expect( @fragmentOne.offset_end ).to eq(4)
       expect( @fragmentTwo.offset_end ).to eq(9)
     end
 
     it "adjusts the fragment offset_start to trim leading spaces or newlines" do
-      @fragmentOne = @song.song_fragments.build(offset_start: 5, offset_end: 9)
-      @fragmentTwo = @song.song_fragments.build(offset_start: 10, offset_end: 13)
+      @fragmentOne = @song.song_fragments.create(offset_start: 5, offset_end: 9)
+      @fragmentTwo = @song.song_fragments.create(offset_start: 10, offset_end: 13)
 
-      @fragmentOne.valid?
-      @fragmentTwo.valid?
+      # @fragmentOne.valid?
+      # @fragmentTwo.valid?
 
       expect( @fragmentOne.offset_start ).to eq(6)
       expect( @fragmentTwo.offset_start ).to eq(11)
     end
 
     it "adjusts fragments with whitespace on both ends" do
-      @fragment = @song.song_fragments.build(offset_start: 5, 14);
+      @fragment = @song.song_fragments.create(offset_start: 5, offset_end: 14)
 
-      @fragment.valid?
+      # @fragment.valid?
 
       expect( @fragment.offset_start ).to eq(6)
       expect( @fragment.offset_end ).to eq(13)
