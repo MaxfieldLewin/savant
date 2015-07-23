@@ -1,3 +1,4 @@
+
 .song-comments-container {
   width: 50%;
   background-color: rgba(153,153,153,0.09);
@@ -10,6 +11,22 @@
   font-family: "Open Sans", sans-serif;
   color: white;
   margin-bottom: 5px;
+}
+
+.new-comment-pseudo-input, .new-comment-contents {
+  background-color: #555;
+  border: 1px solid #333;
+  border-radius: 2px;
+  width: 100%;
+  color: rgb(204,204,204);
+}
+
+.new-comment-pseudo-input {
+  height: 25px;
+}
+
+.new-comment-contents {
+  height: 55px;
 }
 
 .comment-username {

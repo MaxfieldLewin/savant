@@ -23,10 +23,14 @@ Savant.Views.ShowComments = Backbone.CompositeView.extend({
   },
 
   newComment: function(event){
-    $(this.formSelector).empty();
-    var view = new Savant.Views.NewComment({ collection: this.collection, commentableInfo: this.commentableInfo});
-    this.addSubview(this.formSelector, view);
-    $(".new-comment-input").focus();
+    if (Savant.currentUser.isSignedIn){
+      $(this.formSelector).empty();
+      var view = new Savant.Views.NewComment({ collection: this.collection, commentableInfo: this.commentableInfo});
+      this.addSubview(this.formSelector, view);
+      $(".new-comment-input").focus();
+    } else {
+      Savant.router._navBar.singinModal();
+    }
   }
 
 })
