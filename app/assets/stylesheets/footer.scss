@@ -1,16 +1,19 @@
-@import "application.scss";
+@import "mixins.scss";
+
+#footer-container {
+  position: relative;
+}
 
 .footer-main {
-  display: block;
   margin-top: 30px;
   background-color: rgb(34,34,34);
 }
 
-.foot-layer {
+.footer-layer {
   display: block;
   width: 100%;
   font-family: "Open Sans", sans-serif;
-  height: 50px;
+  height: 30px;
 }
 
 .footer-layer.top {
@@ -18,20 +21,20 @@
   color: rgb(204, 204, 204);
 }
 
-.foot-layer-fixed {
-  position: absolute;
-  right: 50%;
-  transform: translateX(-50%);
-}
 
 .footer-layer.bottom {
   font-size: 12px;
   color: rgb(153, 153, 153);
 }
 
-.footer-group {
-  display: block;
-  margin: auto;
+.footer-layer-fixed {
+  @include fixed-width();
+  text-align: center;
+}
+
+ul.footer-group {
+  display: inline-block;
+  transform: translateY(50%);
 }
 
 .footer-group > li {
@@ -41,4 +44,8 @@
 
 .footer-group > li::after {
   content: "•";
+}
+
+.footer-group > li:last-of-type::after {
+  content: "";
 }

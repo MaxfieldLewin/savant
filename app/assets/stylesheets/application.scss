@@ -65,10 +65,3 @@ body {
   background-color: #000;
   color: white;
 }
-
-
-@mixin fixed-width() {
-  display: block;
-  margin: auto;
-  width: 1040px;
-}

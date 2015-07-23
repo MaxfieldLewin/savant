@@ -1,6 +1,6 @@
 /* New Song */
 
-@import "application.scss";
+@import "mixins.scss";
 
 .song-form {
   @include fixed-width();

@@ -1,5 +1,5 @@
 /* Splash Page */
-@import "application.scss";
+@import "mixins.scss";
 
 .splash-fixed-content {
   @include fixed-width();

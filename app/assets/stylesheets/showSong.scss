@@ -1,5 +1,5 @@
 /* Show Song */
-@import "application.scss";
+@import "mixins.scss";
 
 .song-body-container {
   @include fixed-width();
