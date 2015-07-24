@@ -19,7 +19,6 @@ Savant.Views.SplashPage = Backbone.CompositeView.extend({
       login_string: "max",
       password: "maxmax"
     });
-    Savant.router._navBar.render();
     this.$(".title-buttons").empty();
     this.$(".title-area-container").addClass("no-buttons");
   }

@@ -25,7 +25,7 @@ Savant.Views.ShowLyrics = Backbone.CompositeView.extend({
 
   installFragments: function(){
 
-    var lyrics = $(".formatted-lyrics").text();
+    var lyrics = this.$(".formatted-lyrics").text();
     var workingLyrics = lyrics.slice(0, lyrics.length);
     var workingOffset = 0;
     this.model.songFragments().forEach( function (fragment) {
@@ -34,7 +34,7 @@ Savant.Views.ShowLyrics = Backbone.CompositeView.extend({
       workingLyrics = workingLyrics.slice(0, fragment.get("offset_start") + workingOffset + 1) + fragmentLink + workingLyrics.slice(fragment.get("offset_end") + workingOffset + 1);
       workingOffset += (fragmentLink.length - fragmentRawText.length);
     })
-    $(".formatted-lyrics").html(workingLyrics);
+    this.$(".formatted-lyrics").html(workingLyrics);
 
   },
 
@@ -60,7 +60,7 @@ Savant.Views.ShowLyrics = Backbone.CompositeView.extend({
   },
 
   displayNewAnnotation: function(fragment){
-    $("a[href='/#songFragments/" + fragment.id + "']").addClass("maybe-annotation");
+    this.$("a[href='/#songFragments/" + fragment.id + "']").addClass("maybe-annotation");
     var newAnnotationView = new Savant.Views.NewAnnotation({ collection: this.model.songFragments(), fragment: fragment });
     this.swapDetailsView(newAnnotationView);
   },
@@ -69,7 +69,7 @@ Savant.Views.ShowLyrics = Backbone.CompositeView.extend({
     if($(event.target)[0].className === "formatted-lyrics"){
       var selection = window.getSelection();
       var selected = window.getSelection().toString();
-      var lyricsDomCopy = $(".formatted-lyrics")
+      var lyricsDomCopy = this.$(".formatted-lyrics")
       var lyrics = lyricsDomCopy.text();
       var offsetStart = lyrics.indexOf(selected);
 
@@ -93,7 +93,7 @@ Savant.Views.ShowLyrics = Backbone.CompositeView.extend({
         selectionNode.parentNode.insertBefore(matchStrNode, selectionNode);
         selectionNode.parentNode.removeChild(selectionNode);
 
-        var modifiedLyrics = $(".formatted-lyrics").text();
+        var modifiedLyrics = this.$(".formatted-lyrics").text();
         var trueOffset = modifiedLyrics.indexOf(matchStr) + selectionNodeOffset;
 
         var replacementNode = document.createTextNode(nodeText);

@@ -36,9 +36,9 @@ Savant.Views.NewComment = Backbone.View.extend({
      }.bind(this),
 
        error: function (model, response) {
-         $(".errors").empty()
+         this.$(".errors").empty()
          response.responseJSON.forEach(function(error){
-           $(".errors").append(error + "<br>");
+           this.$(".errors").append(error + "<br>");
          }.bind(this))
        }.bind(this)
     })
