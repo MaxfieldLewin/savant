@@ -28,8 +28,38 @@
   font-size: 18px;
   font-weight: lighter;
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
+
+.title-area-container {
+  display: block;
+  position: relative;
+  height: 230px;
+}
+
+.title-buttons {
+  position: absolute;
+  display: inline-block;
+  text-align: center;
+  left: 50%;
+  transform: translateX(-50%);
+
+}
+
+.title-buttons > a {
+  padding: 10px 7px;
+  color: #ffff64;
+  font-family: "Open Sans", sans-serif;
+  font-weight: lighter;
+  font-size: 18px;
+  border: 1px solid #ffff64;
+  margin-bottom: 20px;
+}
+
+.title-buttons > a:hover {
+  background-color: rgba(255, 255, 64, 0.5);
+}
+
 
 .splash-song{
   display: block;

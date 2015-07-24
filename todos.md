@@ -5,7 +5,7 @@
 - [ ] Quality Seeds
 - [X] Genres
 - [ ] Genre splash
-- [ ] Render comment/annotation images
+- [X] Render comment/annotation images
 - [ ] Artist show page w/ inline edit
 
 ## Known bugs/incomplete features
