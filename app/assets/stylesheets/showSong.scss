@@ -148,7 +148,17 @@
   border-left: 1px solid rgb(255, 255, 100);
 }
 
+.lyrics-details {
+  padding: 10px;
+  font-family: "Varela Round", sans-serif;
+  font-size: 16px;
+}
+
 .formatted-lyrics > a.maybe-annotation {
   background-color: #ffff64;
   color: #000;
+}
+
+.details-comments-container {
+  margin-top: 10px;
 }
