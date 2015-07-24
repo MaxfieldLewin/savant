@@ -85,6 +85,22 @@
   padding: 9px 10px 3px 14px;
 }
 
+.edit-lyrics, .submit-edit, .cancel-edit {
+  background-color: rgba(55, 55, 55, .4);
+  font-family: "Abel", sans-serif;
+  font-size: 16px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  color: #eee;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.edit-lyrics:hover, .submit-edit:hover, .cancel-edit:hover {
+  background-color: rgba(55, 55, 55, .8);
+}
+
 .lyrics-container {
   display: block;
   float: left;

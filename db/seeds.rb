@@ -9,7 +9,7 @@ Faker::Config.locale = 'en-US'
 
 max = User.create!(username: "max", email: "max@max.max", password: "maxmax")
 
-artists = ["Lil B", "MF DOOM", "Gucci Mane", "William Shakespeare", "William Shattner", "Will Smith", "Will.I.Am"]
+artists = ["Lil B", "MF DOOM", "Gucci Mane", "Drake", "William Shakespeare", "William Shattner", "Will Smith", "Will.I.Am"]
 
 rap = Genre.create!(genre_name: "Rap")
 pop = Genre.create!(genre_name: "Pop")
@@ -18,6 +18,17 @@ rab = Genre.create!(genre_name: "R&B")
 news = Genre.create!(genre_name: "News")
 tech = Genre.create!(genre_name: "Tech")
 law = Genre.create!(genre_name: "Law")
+
+
+images = [
+  File.new("#{Rails.root}/app/assets/images/missing.jpg"),
+  File.new("#{Rails.root}/app/assets/images/darth.gif"),
+  File.new("#{Rails.root}/app/assets/images/drake2.jpg"),
+  File.new("#{Rails.root}/app/assets/images/drake.png"),
+  File.new("#{Rails.root}/app/assets/images/helpcomputer.jpg"),
+  File.new("#{Rails.root}/app/assets/images/lilb.jpg"),
+  File.new("#{Rails.root}/app/assets/images/shaqgate.png")
+  ]
 
 artists.each do |artist|
   artist_model = Artist.create!(name: artist)
@@ -34,7 +45,7 @@ artists.each do |artist|
 
     contents = Faker::Lorem.paragraphs(4).join;
 
-    artist_model.songs.create(title: title, contents: contents)
+    artist_model.songs.create(title: title, contents: contents, image: images.sample)
   end
 end
 

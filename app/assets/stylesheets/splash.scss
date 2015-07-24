@@ -70,6 +70,7 @@
 .splash-song{
   display: block;
   width: 336px;
+  height: 326px;
   float: left;
   position: relative;
   margin: 0px 0px 6px 10px;
@@ -77,6 +78,7 @@
 
 .splash-song:first-child {
   width: 682px;
+  height: 657px;
 }
 
 .splash-song-link {
@@ -86,9 +88,16 @@
 }
 
 .splash-song-image {
-  width: 100%;
-  height: auto;
+  display: block;
+  width: 336px;
+  height: 326px;
 }
+
+.splash-song:first-child .splash-song-image {
+  width: 682px;
+  height: 657px;
+}
+
 
 .splash-song-image-overlay::before {
   content: "";

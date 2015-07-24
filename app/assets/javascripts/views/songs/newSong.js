@@ -65,7 +65,9 @@ Savant.Views.NewSong = Backbone.View.extend({
     formData.append("song[title]", title);
     formData.append("song[artist_name]", artist);
     formData.append("song[contents]", contents);
-    formData.append("song[image]", file);
+    if (file){
+      formData.append("song[image]", file);
+    }
 
     this.model.saveFormData( formData, {
       success: function(){

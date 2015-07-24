@@ -58,13 +58,13 @@ Savant.Routers.Router = Backbone.Router.extend({
     this.swapRootView(view);
   },
 
-  requireSignedIn: function(callback){
+  requireSignedIn: function(callback, message){
     if (!Savant.currentUser.isSignedIn()) {
       callback = callback || this._goHome.bind(this);
-      this._navBar.signinModal(callback);
+      this._navBar.signinModal(callback, message);
       return false;
     }
-
+    
     return true;
   },
 

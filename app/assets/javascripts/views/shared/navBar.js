@@ -59,10 +59,13 @@ Savant.Views.NavBar = Backbone.View.extend({
     }
   },
 
-  signinModal: function(callback){
+  signinModal: function(callback, message){
     var modal = this.$pageRef.find("#modal-container")
     modal.find(".modal-form").html(this.signinForm({ user: this.model }));
     modal.addClass("is-open");
+    if (message){
+      modal.find(".message-container").html(message);
+    }
     this.$pageRef.find(".modal-screen").one("click", this.cancelModal.bind(this));
     this.$pageRef.find(".modal-signin").one("submit", this.submitSignin.bind(this, callback));
   },
