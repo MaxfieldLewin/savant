@@ -35,6 +35,12 @@
   display: block;
   position: relative;
   height: 230px;
+  -webkit-transition: height 0.3s;
+  transition: height 0.3s;
+}
+
+.title-area-container.no-buttons {
+  height: 170px;
 }
 
 .title-buttons {

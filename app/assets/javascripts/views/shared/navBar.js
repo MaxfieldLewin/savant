@@ -8,6 +8,7 @@ Savant.Views.NavBar = Backbone.View.extend({
     "click #nav-signup":"signupModal",
     "click #nav-signin":"signinModal",
     "click #nav-signout":"signout",
+    "click .nav-tag-item":"changeGenre",
     "click .nav-create-link":"checkSignIn",
     "input .nav-search-bar":"updateSearchResults"
   },
@@ -126,6 +127,9 @@ Savant.Views.NavBar = Backbone.View.extend({
     Savant.currentUser.signOut();
   },
 
+  changeGenre: function(event){
+    event.preventDefault();
+  },
 
   toggleSmallTitle: function(router, route){
     if (route === "splashPage"){

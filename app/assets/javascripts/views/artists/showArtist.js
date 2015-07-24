@@ -8,9 +8,15 @@ Savant.Views.ShowArtist = Backbone.CompositeView.extend({
   },
 
   render: function(){
-    this.$el.html(this.template({ artist: this.model, songs: this.model.songs() }));
+
+    var imageUrl = false;
+    if (this.model.has("image_urL")){
+      imageUrl = this.model.escape("image_url")
+    }
+
+    this.$el.html(this.template({ artist: this.model, songs: this.model.songs(), imageUrl: imageUrl }));
     var descriptionView = new Savant.Views.ShowArtistDescription({ model: this.model })
-    this.addSubview(this.detailsSelector, descriptionView)
+    this.addSubview(this.detailsSelector, descriptionView);
     this.showComments();
     return this;
   },

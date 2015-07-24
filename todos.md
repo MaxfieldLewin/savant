@@ -1,7 +1,7 @@
 ## MVP Features
 - [X] Comment style
 - [X] Top-level Search
-- [ ] Guest login
+- [X] Guest login
 - [ ] Quality Seeds
 - [X] Genres
 - [ ] Genre splash
