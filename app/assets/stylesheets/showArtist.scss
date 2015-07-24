@@ -1,0 +1,56 @@
+@import "mixins.scss";
+
+.artist-header, .artist-body-container {
+  @include fixed-width();
+  color: #fff;
+  font-family: "Open Sans", sans-serif;
+}
+
+.artist-header {
+  font-size: 50px;
+  font-weight: bold;
+  border-bottom: 1px solid #fff;
+  margin-bottom: 20px;
+}
+
+.artist-songs-container {
+  display: block;
+  width: 50%;
+}
+
+.artist-songs-container > h2 {
+  font-size: 22px;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.artist-songs-list {
+  width: 100%;
+  display: block;
+  float: left;
+  font-size: 16px;
+  font-weight: normal;
+}
+
+.artist-song-list-item {
+  display: block;
+  width: 100%;
+  padding: 5px 0px;
+  border-bottom: 1px solid rgb(30, 30, 30);
+  transition: border-left, 0.3s;
+}
+
+.artist-song-list-item:first-child {
+  border-top: 1px solid rgb(30, 30, 30);
+}
+
+.artist-song-list-item:hover {
+  border-left: 2px solid #ffff64;
+}
+
+.artist-details-container {
+  display: block;
+  float: right;
+  width: 48%;
+}
