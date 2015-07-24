@@ -32,18 +32,17 @@ class SongFragment < ActiveRecord::Base
 
   def trim_fragment_intervals
     start_char = self.song.contents[self.offset_start]
-    end_char   = self.song.contents[self.offset_end]
+    end_char   = self.song.contents[self.offset_end - 1]
 
-    while start_char == " " || start_char == "\n"
+    if start_char == " " || start_char == "\n"
       self.offset_start += 1
       start_char = self.song.contents[self.offset_start]
     end
 
-    while end_char == " " || end_char == "\n"
+    if end_char == " " || end_char == "\n"
       self.offset_end -= 1
       end_char = self.song.contents[self.offset_end]
     end
-
   end
 
   def fragment_interval_available

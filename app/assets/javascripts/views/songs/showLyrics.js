@@ -29,9 +29,9 @@ Savant.Views.ShowLyrics = Backbone.CompositeView.extend({
     var workingLyrics = lyrics.slice(0, lyrics.length);
     var workingOffset = 0;
     this.model.songFragments().forEach( function (fragment) {
-      var fragmentRawText = lyrics.substring(fragment.get("offset_start"), fragment.get("offset_end") + 1)
+      var fragmentRawText = lyrics.substring(fragment.get("offset_start") + 1, fragment.get("offset_end") + 1)
       var fragmentLink = fragmentRawText.link('/#songFragments/' + fragment.id);
-      workingLyrics = workingLyrics.slice(0, fragment.get("offset_start") + workingOffset) + fragmentLink + workingLyrics.slice(fragment.get("offset_end") + workingOffset + 1);
+      workingLyrics = workingLyrics.slice(0, fragment.get("offset_start") + workingOffset + 1) + fragmentLink + workingLyrics.slice(fragment.get("offset_end") + workingOffset + 1);
       workingOffset += (fragmentLink.length - fragmentRawText.length);
     })
     $(".formatted-lyrics").html(workingLyrics);
@@ -114,8 +114,8 @@ Savant.Views.ShowLyrics = Backbone.CompositeView.extend({
       var maybeFragment = new Savant.Models.SongFragment()
       maybeFragment.save({
         song_id: this.model.id,
-        offset_start: trueOffset,
-        offset_end: trueOffset + selected.length
+        offset_start: trueOffset - 1,
+        offset_end: trueOffset - 1 + selected.length
       },
       {
         success: function(){

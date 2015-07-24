@@ -1,5 +1,4 @@
 ## MVP Features
-- [ ] Artist show page w/ inline edit
 - [X] Comment style
 - [X] Top-level Search
 - [ ] Guest login
@@ -7,6 +6,7 @@
 - [X] Genres
 - [ ] Genre splash
 - [ ] Render comment/annotation images
+- [ ] Artist show page w/ inline edit
 
 ## Known bugs/incomplete features
 - [ ] Set up auth gating on C/U/D actions (backend)
