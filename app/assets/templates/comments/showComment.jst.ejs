@@ -1,2 +1,5 @@
 <h2 class="comment-username"><%= comment.escape("username") %></h2>
 <p class="comment-contents"><%= comment.escape("contents") %></p>
+<% if (imageUrl) { %>
+  <img class="comment-show-image" src="<%= imageUrl %>">
+<% } %>

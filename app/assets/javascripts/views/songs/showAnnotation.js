@@ -8,7 +8,12 @@ Savant.Views.ShowAnnotation = Backbone.CompositeView.extend({
   },
 
   render: function(){
-    this.$el.html(this.template({ title: "Savant Annotation", details: this.model.get("contents") }));
+    if (this.model.has("image_url")){
+      var imageUrl = this.model.escape("image_url");
+    } else {
+      var imageUrl = false;
+    }
+    this.$el.html(this.template({ title: "Savant Annotation", details: this.model.get("contents"), imageUrl: imageUrl }));
     this.$el.css({top: this.verticalOffset});
     this.showComments();
     Backbone.$("body").on("click", this.checkClickAway.bind(this));

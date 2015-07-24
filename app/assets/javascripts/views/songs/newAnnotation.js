@@ -19,14 +19,28 @@ Savant.Views.NewAnnotation = Backbone.View.extend({
 
   submitAnnotation: function(event){
     event.preventDefault();
-    attrs = { contents: $(event.currentTarget).find(".annotation-textarea").val(),
-              song_fragment_id: this.fragment.id };
-    this.model.save(attrs, {
+
+    var song_fragment_id = this.fragment.id
+    var contents = this.$("#annotation-contents").val();
+    var file = this.$("#annotation-image")[0].files[0];
+
+    var formData = new FormData();
+    formData.append("annotation[song_fragment_id]", song_fragment_id);
+    formData.append("annotation[contents]", contents);
+    if (file){
+      formData.append("annotation[image]", file);
+    }
+
+    this.model.saveFormData( formData, {
       success: function(){
         this.fragment._annotation = this.model;
         this.collection.add(this.fragment, {merge: true});
         this.$el.trigger("submitNewAnnotation");
-      }.bind(this)
+      }.bind(this),
+
+       error: function (model, response) {
+         this.cancelAnnotation()
+       }.bind(this)
     })
   },
 

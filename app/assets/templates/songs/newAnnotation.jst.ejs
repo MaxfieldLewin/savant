@@ -3,9 +3,11 @@
 
   <div class="input-textarea-container">
     <br>
-    <textarea class="annotation-textarea" name="annotation[contents]" default="Say a cool thing"></textarea>
+    <textarea id="annotation-contents" class="annotation-textarea" name="annotation[contents]" default="Say a cool thing to sound smart"></textarea>
   </div>
 
+  <label for="annotation-image">Add an Image</label>
+  <input id="annotation-image" class="image-button" type="file" name="annotation[image]">
 
   <button class="form-button">Submit</button>
   <a id="cancel-annotation">cancel</a>

@@ -14,7 +14,7 @@
 #
 
 class Annotation < ActiveRecord::Base
-  has_attached_file :image, default_url: "missing.jpg"
+  has_attached_file :image
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
   validates :contents, :song_fragment_id, presence: true;

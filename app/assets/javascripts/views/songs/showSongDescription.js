@@ -3,7 +3,7 @@ Savant.Views.ShowSongDescription = Backbone.CompositeView.extend({
   tagName: "section class='lyrics-details description'",
 
   render: function () {
-    this.$el.html(this.template({ title: "Description", details: this.model.get("description") }));
+    this.$el.html(this.template({ title: "Description", details: this.model.get("description"), imageUrl: false }));
     return this;
   }
 })
