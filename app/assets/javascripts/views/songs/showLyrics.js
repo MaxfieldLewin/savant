@@ -65,17 +65,23 @@ Savant.Views.ShowLyrics = Backbone.CompositeView.extend({
     this.swapDetailsView(newAnnotationView);
   },
 
-  maybeAnnotate: function(event){
-    if($(event.target)[0].className === "formatted-lyrics"){
-      var selection = window.getSelection();
-      var selected = window.getSelection().toString();
+  maybeAnnotate: function(event, priorSelection){
+
+    if(Savant.currentUser.isSignedIn() && $(event.target)[0].className === "formatted-lyrics"){
+
+      if (priorSelection){
+        var selection = priorSelection;
+        var selected = priorSelection.selected;
+      } else {
+        var selection = window.getSelection();
+        var selected = selection.toString();
+      }
+
       var lyricsDomCopy = this.$(".formatted-lyrics")
       var lyrics = lyricsDomCopy.text();
       var offsetStart = lyrics.indexOf(selected);
-
       //this conditional is trying to handle cases of repeated lyrics
       if( offsetStart !== lyrics.lastIndexOf(selected)) {
-        console.log("in repeat handler");
         if(selection.anchorOffset < selection.focusOffset){
           var selectionNodeOffset = selection.anchorOffset;
         } else {
@@ -124,7 +130,17 @@ Savant.Views.ShowLyrics = Backbone.CompositeView.extend({
           this.displayNewAnnotation(maybeFragment);
         }.bind(this),
       });
+    } else if (!Savant.currentUser.isSignedIn() && $(event.target)[0].className === "formatted-lyrics") {
+      var currentSelection = window.getSelection();
 
+      var priorSelection = {
+        selected: currentSelection.toString(),
+        focusOffset: currentSelection.focusOffset,
+        anchorOffset: currentSelection.anchorOffset,
+        anchorNode: currentSelection.anchorNode
+      }
+
+      Savant.router.requireSignedIn(this.maybeAnnotate.bind(this, event, priorSelection))
     }
   },
 

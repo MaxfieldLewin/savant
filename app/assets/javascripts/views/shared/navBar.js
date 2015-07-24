@@ -9,7 +9,6 @@ Savant.Views.NavBar = Backbone.View.extend({
     "click #nav-signin":"signinModal",
     "click #nav-signout":"signout",
     "click .nav-tag-item":"changeGenre",
-    "click .nav-create-link":"checkSignIn",
     "input .nav-search-bar":"updateSearchResults"
   },
 
@@ -65,7 +64,7 @@ Savant.Views.NavBar = Backbone.View.extend({
     modal.find(".modal-form").html(this.signinForm({ user: this.model }));
     modal.addClass("is-open");
     this.$pageRef.find(".modal-screen").one("click", this.cancelModal.bind(this));
-    this.$pageRef.find(".modal-signin").one("submit", this.submitSignin.bind(this));
+    this.$pageRef.find(".modal-signin").one("submit", this.submitSignin.bind(this, callback));
   },
 
   cancelModal: function(){
@@ -74,7 +73,7 @@ Savant.Views.NavBar = Backbone.View.extend({
     modal.removeClass("is-open");
   },
 
-  submitSignup: function(event){
+  submitSignup: function(event, callback){
     event.preventDefault();
     var attrs = $(event.target).serializeJSON();
 
@@ -100,7 +99,7 @@ Savant.Views.NavBar = Backbone.View.extend({
     });
   },
 
-  submitSignin: function(event){
+  submitSignin: function(callback, event){
     event.preventDefault();
     var credentials = $(event.target).serializeJSON();
     Savant.currentUser.signIn({
@@ -109,6 +108,7 @@ Savant.Views.NavBar = Backbone.View.extend({
 
       success: function(){
         this.cancelModal();
+        callback();
       }.bind(this),
 
       error: function (response) {
@@ -136,14 +136,6 @@ Savant.Views.NavBar = Backbone.View.extend({
       $(".small-title").removeClass("visible");
     } else {
       $(".small-title").addClass("visible");
-    }
-  },
-
-  checkSignIn: function(event){
-    if (!Savant.currentUser.isSignedIn()){
-      this.signinModal();
-    } else {
-      Savant.router.navigate("/#artists/new", { trigger: true })
     }
   }
 

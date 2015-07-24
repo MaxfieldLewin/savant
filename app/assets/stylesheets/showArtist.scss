@@ -36,9 +36,15 @@
 .artist-song-list-item {
   display: block;
   width: 100%;
-  padding: 5px 0px;
   border-bottom: 1px solid rgb(30, 30, 30);
-  transition: border-left, 0.3s;
+  transition: all, 0.3s;
+}
+
+.artist-song-list-item > a {
+  display: block;
+  height: 100%;
+  width: 100%;
+  padding: 5px 0px;
 }
 
 .artist-song-list-item:first-child {
@@ -46,7 +52,8 @@
 }
 
 .artist-song-list-item:hover {
-  border-left: 2px solid #ffff64;
+  border-left: 3px solid #ffff64;
+  padding-left: 5px;
 }
 
 .artist-details-container {

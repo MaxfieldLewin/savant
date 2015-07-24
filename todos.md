@@ -6,7 +6,7 @@
 - [X] Genres
 - [ ] Genre splash
 - [X] Render comment/annotation images
-- [ ] Artist show page w/ inline edit
+- [X] Artist show page w/ inline edit
 
 ## Known bugs/incomplete features
 - [ ] Set up auth gating on C/U/D actions (backend)
