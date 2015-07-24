@@ -14,6 +14,7 @@
 #  image_file_size    :integer
 #  image_updated_at   :datetime
 #
+require 'diff/lcs/string'
 
 class Song < ActiveRecord::Base
   include PgSearch
@@ -42,6 +43,30 @@ class Song < ActiveRecord::Base
 
   def adjust_fragments
     previous_contents = self.contents
+
     yield
+
+    diff_blocks = previous_contents.diff(self.contents)
+    fragments = self.song_fragments.order(:offset_start).to_a
+    adjustOffset = 0
+
+    diff_blocks.each do |block|
+      adds = block.count { |b| b[0] == "+" }
+      subs = block.count { |b| b[0] == "-" }
+      adjustOffset += (adds - subs)
+
+      touching_fragments, fragments = fragments.partition do |f|
+        f.offset_start >= block.last[1] || f.offset_end <= block.first[1]
+      end
+      
+      touching_fragments.each do |f|
+        f.offset_start += adjustOffset
+        f.offset_end += adjustOffset
+
+
+        f.save(validate: false)
+      end
+    end
+
   end
 end

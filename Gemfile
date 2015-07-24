@@ -15,6 +15,7 @@ gem 'omniauth-twitter'
 gem 'paperclip'
 gem 'aws-sdk', '~> 1.6'
 gem 'pg_search'
+gem 'diff-lcs'
 
 group :development, :test do
   gem 'rspec-rails'

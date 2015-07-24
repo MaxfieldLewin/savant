@@ -273,6 +273,7 @@ DEPENDENCIES
   binding_of_caller
   capybara
   coffee-rails (~> 4.1.0)
+  diff-lcs
   factory_girl_rails
   faker
   figaro
