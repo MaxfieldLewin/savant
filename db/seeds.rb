@@ -45,7 +45,7 @@ artists.each do |artist|
 
     contents = Faker::Lorem.paragraphs(4).join;
 
-    artist_model.songs.create(title: title, contents: contents, image: images.sample)
+    artist_model.songs.create(title: title, contents: contents)
   end
 end
 

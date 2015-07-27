@@ -1,17 +1,13 @@
 ## MVP Features
-- [X] Comment style
-- [X] Top-level Search
-- [X] Guest login
+- [~] Comment style
 - [ ] Quality Seeds
-- [X] Genres
 - [ ] Genre splash
-- [X] Render comment/annotation images
-- [X] Artist show page w/ inline edit
+- [~] Artist show page w/ inline edit
 
 ## Known bugs/incomplete features
+- [ ] Stretch fragments to complete words
 - [ ] Set up auth gating on C/U/D actions (backend)
-- [X] Need to trim new song-fragments on word start/end
-- [ ] Re-anchoring annotations when song lyrics are updated
+- [X] Re-anchoring annotations when song lyrics are updated
 - [ ] Flicker on annotation view clickaway to other annotation
 - [ ] Make splash page images more rectangular
 

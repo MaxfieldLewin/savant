@@ -24,7 +24,7 @@ class Song < ActiveRecord::Base
   validates :title, :artist_id, :contents, presence: true
   validates :title, uniqueness: {scope: :artist_id}
 
-  around_update :adjust_fragments
+  after_update :adjust_fragments
 
   belongs_to :artist
 
@@ -42,30 +42,55 @@ class Song < ActiveRecord::Base
   multisearchable against: [:title, :contents]
 
   def adjust_fragments
-    previous_contents = self.contents
-
-    yield
-
+    previous_contents = self.contents_was
     diff_blocks = previous_contents.diff(self.contents)
     fragments = self.song_fragments.order(:offset_start).to_a
     adjustOffset = 0
 
     diff_blocks.each do |block|
-      adds = block.count { |b| b[0] == "+" }
-      subs = block.count { |b| b[0] == "-" }
+
+      prior_fragments, fragments = fragments.partition do |f|
+        f.offset_end < block.first.position
+      end
+
+      prior_fragments.each do |f|
+        f.offset_start += adjustOffset
+        f.offset_end += adjustOffset
+        f.save(validate: false)
+      end
+
+      adds = block.count { |d| d.action == "+" }
+      subs = block.count { |d| d.action == "-" }
       adjustOffset += (adds - subs)
 
       touching_fragments, fragments = fragments.partition do |f|
-        f.offset_start >= block.last[1] || f.offset_end <= block.first[1]
+        (block.first.position >= f.offset_start && block.first.position <= f.offset_end) ||
+        (block.last.position >= f.offset_start && block.last.position <= f.offset_end)
       end
-      
+
       touching_fragments.each do |f|
-        f.offset_start += adjustOffset
-        f.offset_end += adjustOffset
+        block.each do |d|
+          if d.position < f.offset_start
+            if d.action == "+"
+              f.offset_start += 1
+              f.offset_end += 1
+            else
+              f.offset_start -= 1
+              f.offset_end -= 1
+            end
+          elsif d.position >= f.offset_start && d.position <= f.offset_end
+            (d.action == "+") ? f.offset_end += 1 : f.offset_end -= 1
+          end
+        end
 
-
-        f.save(validate: false)
+        f.offset_end - f.offset_start < 1 ? f.destroy : f.save(validate: false)
       end
+    end
+
+    fragments.each do |f|
+      f.offset_start += adjustOffset
+      f.offset_end += adjustOffset
+      f.save(validate: false)
     end
 
   end

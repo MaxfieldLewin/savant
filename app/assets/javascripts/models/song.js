@@ -29,5 +29,10 @@ Savant.Models.Song = Backbone.Model.extend({
     };
 
     return response;
+  },
+
+  toJSON: function(){
+    var json = {song: _.clone(this.attributes)};
+    return json;
   }
 })
