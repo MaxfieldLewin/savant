@@ -68,6 +68,7 @@ Savant.Views.NavBar = Backbone.View.extend({
     }
     this.$pageRef.find(".modal-screen").one("click", this.cancelModal.bind(this));
     this.$pageRef.find(".modal-signin").one("submit", this.submitSignin.bind(this, callback));
+    this.$pageRef.find(".modal-signin .guest-button").one("click", this.guestSignin.bind(this, callback));
   },
 
   cancelModal: function(){
@@ -123,6 +124,18 @@ Savant.Views.NavBar = Backbone.View.extend({
         this.$pageRef.find(".modal-signin").one("submit", this.submitSignup.bind(this));
       }.bind(this)
     })
+  },
+
+  guestSignin: function(callback){
+    Savant.currentUser.signIn({
+      login_string: "Guest",
+      password: "guestguest",
+
+      success: function(){
+        this.cancelModal();
+        callback();
+      }.bind(this)
+    });
   },
 
   signout: function(event){
