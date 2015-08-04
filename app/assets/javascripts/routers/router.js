@@ -64,7 +64,7 @@ Savant.Routers.Router = Backbone.Router.extend({
       this._navBar.signinModal(callback, message);
       return false;
     }
-    
+
     return true;
   },
 
