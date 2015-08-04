@@ -145,6 +145,7 @@ Savant.Views.NavBar = Backbone.View.extend({
 
   changeGenre: function(event){
     event.preventDefault();
+    Savant.router.navigate(event.target.hash, {trigger: true})
   },
 
   toggleSmallTitle: function(router, route){

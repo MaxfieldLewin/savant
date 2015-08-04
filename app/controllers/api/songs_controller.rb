@@ -31,13 +31,15 @@ class Api::SongsController < ApplicationController
   end
 
   def index
-    # @songs = Song.includes(:artist).all
-    @songs = Song.includes(:artist).all.shuffle.take(9);
-    # @songs = Song.includes(:artist).find_by_sql("SELECT * FROM songs ORDER BY RANDOM() LIMIT 10")
+    if params[:genre_id]
+      @songs = Song.includes(:artist).joins(:genre).where(genres: {id: params[:genre_id]}).limit(9);
+    else
+      @songs = Song.includes(:artist).all.shuffle.take(9);
+    end
   end
 
   private
     def song_params
-      params.require(:song).permit(:title, :description, :contents, :image)
+      params.require(:song).permit(:title, :description, :contents, :image, :genre_id)
     end
 end
