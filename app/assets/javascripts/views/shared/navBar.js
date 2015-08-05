@@ -51,6 +51,7 @@ Savant.Views.NavBar = Backbone.View.extend({
 
   signupModal: function(){
     if (Savant.router.requireSignedOut()) {
+      $(window).scrollTop(0);
       var modal = this.$pageRef.find("#modal-container")
       modal.find(".modal-form").html(this.signupForm({ user: this.model }));
       modal.addClass("is-open");
@@ -60,6 +61,7 @@ Savant.Views.NavBar = Backbone.View.extend({
   },
 
   signinModal: function(callback, message){
+    $(window).scrollTop(0);
     var modal = this.$pageRef.find("#modal-container")
     modal.find(".modal-form").html(this.signinForm({ user: this.model }));
     modal.addClass("is-open");

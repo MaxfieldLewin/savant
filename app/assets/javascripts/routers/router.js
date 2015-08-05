@@ -87,6 +87,7 @@ Savant.Routers.Router = Backbone.Router.extend({
       this._currentRootView.remove();
     }
 
+    $(window).scrollTop(0);
     this.$rootEl.html(view.render().$el);
     this._currentRootView = view;
   }
