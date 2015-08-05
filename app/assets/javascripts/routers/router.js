@@ -30,11 +30,7 @@ Savant.Routers.Router = Backbone.Router.extend({
 
   splashPage: function(id){
     var songs = new Savant.Collections.Songs();
-    if (!id){
-      songs.fetch();
-    } else {
-      songs.fetch();
-    }
+    songs.genreFetch(id);
     var view = new Savant.Views.SplashPage({ collection: songs });
     this.swapRootView(view);
   },
